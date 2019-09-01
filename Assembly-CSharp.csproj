@@ -55,7 +55,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\Board.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\Building.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\BuildingHandler.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\City.cs" />
+     <Compile Include="Assets\Scripts\Inspiration\UIController.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEvent.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameProperties.cs" />
@@ -64,49 +70,49 @@
      <Compile Include="Assets\Scripts\Tiles\CityTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\ExplosionCenterTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\FactoryTile.cs" />
-     <Compile Include="Assets\Scripts\Tiles\ITileType.cs" />
      <Compile Include="Assets\Scripts\Tiles\RocketSiloTile.cs" />
      <Compile Include="Assets\Scripts\Tiles\ScienceCampus.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\TimeBehaviour.cs" />
+     <None Include="Assets\Shader\InvisibleShader.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProGrids">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProGrids.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AddOns.Editor">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>/home/michalbilinski/Unity/Local Projects/Peppermynt/Destruction Avoid/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>/home/michalbilinski/Unity/Local Projects/Destruction Avoid/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/home/michalbilinski/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

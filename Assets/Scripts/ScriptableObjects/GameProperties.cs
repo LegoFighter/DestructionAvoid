@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameProperties : MonoBehaviour
+[CreateAssetMenu]
+public class GameProperties : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int NextSharedRessourcesId;
+    public int Money;
+    public float AverageEducationLevel;
+    public int Population;
+    public float StageOfRocketCompletion;
+    public float DistanceToFromEarth;
+    public int AsteroidSpeed;
 }

@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public ITileType tileType;
-    public int id;
-    public SharedRessources sharedRessources;
+    public int Id;
+    public int sharedRessourcesId;
 
-    public void SetSharedRessource(SharedRessources sharedRessources)
-    {
-        this.sharedRessources = sharedRessources;
-    }
+}
+
+public enum Tyletype {
+
+    CITY_SMALL,
+    CITY_MIDDLE,
+    CITY_LARGE,
+    EXPLOSIVE_TEST_CENTER,
+    SCIENCE_CAMPUS,
+    STREET,
+    ROCKET_CENTER,
+    FACTORY,
+
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CityTile : ITileType
+public class CityTile : Tile
 {
    
 
