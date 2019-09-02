@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8343556062874401921}
   - component: {fileID: -2588574597195962357}
   m_Layer: 0
-  m_Name: MineshaftTile
+  m_Name: Mineshaft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,9 +439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5888d570886f2a419a9e00bb41e7e1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 6
+  Id: 0
   SharedRessourcesId: 0
-  Type: 0
+  Type: 6
   Cost: 0
 --- !u!1 &4945328294986703247
 GameObject:

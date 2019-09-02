@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2838075122981788894}
   - component: {fileID: 6004654170312511036}
   m_Layer: 0
-  m_Name: NuclearAreaTile
+  m_Name: NuclearArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5888d570886f2a419a9e00bb41e7e1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 9
+  Id: 0
   SharedRessourcesId: 0
-  Type: 0
+  Type: 9
   Cost: 0
 --- !u!1 &3557890671584851537
 GameObject:
