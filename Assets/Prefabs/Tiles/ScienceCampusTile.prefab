@@ -117,7 +117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -448,7 +448,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -799,7 +799,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 1239847608517957790}
   - component: {fileID: 1239847608517957789}
   m_Layer: 0
-  m_Name: ScienceCampus
+  m_Name: ScienceCampusTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +1982,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2313,7 +2313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2644,7 +2644,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: a90b4a71ca17438a1879b96fc1ff8862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

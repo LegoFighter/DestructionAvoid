@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: b79d260dc7f8b5b1596d93fe5385566c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -722,7 +722,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: b79d260dc7f8b5b1596d93fe5385566c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1409,7 +1409,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d2e9375cc16df140862a9b2f2a1f61d, type: 2}
+  - {fileID: 2100000, guid: b79d260dc7f8b5b1596d93fe5385566c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5934,7 +5934,7 @@ GameObject:
   - component: {fileID: 870822176890910562}
   - component: {fileID: 870822176890910563}
   m_Layer: 0
-  m_Name: Factory
+  m_Name: FactoryTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

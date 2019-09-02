@@ -44,6 +44,8 @@ public class CameraScript : MonoBehaviour
     private bool doingAutoMovement = false;
     private DoubleClickDetectorC doubleClickDetector;
 
+    public Transform InitialCameraTarget;
+
 
     // Use this for initialization
     public void Start()
@@ -52,6 +54,8 @@ public class CameraScript : MonoBehaviour
         lastMousePos = Vector3.zero;
         doubleClickDetector = gameObject.AddComponent<DoubleClickDetectorC>();
         doubleClickDetector.doubleClickTimeWindow = doubleClickTimeWindow;
+
+        cameraTarget = InitialCameraTarget.position;
     }
 
     // Update is called once per frame
