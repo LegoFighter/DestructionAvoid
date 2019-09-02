@@ -5,12 +5,14 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public int Id;
-    public int sharedRessourcesId;
+    public int SharedRessourcesId;
+    public Type Type;
+    public int Cost;
 
 }
 
-public enum Tyletype {
-
+public enum Type
+{
     CITY_SMALL,
     CITY_MIDDLE,
     CITY_LARGE,
@@ -19,5 +21,6 @@ public enum Tyletype {
     STREET,
     ROCKET_CENTER,
     FACTORY,
+    EMPTY,
 
 }
