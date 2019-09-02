@@ -4,28 +4,40 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    //private Building[,] buildings = new Building[100, 100];
-    public Tile[] tiles;
 
-    public void AddBuilding(Tile tile, Vector3 position)
+    public GameObject[] Tiles;
+    public GameObject emptyTile;
+
+
+    public void AddTile(GameObject tileToAdd, GameObject tileToReplace)
     {
-        //buildings[(int)position.x, (int)position.z] = Instantiate(building, position, Quaternion.identity);
+        int indexToReplace = 0;
+
+        for (int i = 0; i < Tiles.Length; i++)
+        {
+            if (Tiles[i] == tileToReplace)
+            {
+                indexToReplace = i;
+                break;
+            }
+        }
+        Destroy(Tiles[indexToReplace].gameObject);
+        Tiles[indexToReplace] = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
+
     }
 
-    public Tile CheckForBuildingAtPosition(Vector3 position)
+    public void RemoveTile(GameObject tileAtPosition)
     {
-        return tiles[0];
-
+        AddTile(emptyTile, tileAtPosition);
     }
 
-    public void RemoveBuilding(Vector3 position)
+    public bool CheckIfTileEmpty(GameObject tileAtPosition)
     {
-        //Destroy(buildings[(int)position.x, (int)position.z].gameObject);
-        //buildings[(int)position.x, (int)position.z] = null;
+        return tileAtPosition.GetComponent<Tile>().Type == 0;
     }
 
-    public Vector3 CalculateGridPosition(Vector3 position)
-    {
-        return new Vector3(Mathf.Round(position.x), .5f, Mathf.Round(position.z));
-    }
+    // public Vector3 CalculateGridPosition(Vector3 position)
+    // {
+    //     return new Vector3(Mathf.Round(position.x), .5f, Mathf.Round(position.z));
+    // }
 }

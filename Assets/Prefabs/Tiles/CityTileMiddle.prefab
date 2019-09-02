@@ -421,6 +421,8 @@ GameObject:
   - component: {fileID: 5738008963597581028}
   - component: {fileID: 5738008963597580955}
   - component: {fileID: 5738008963597580954}
+  - component: {fileID: -3744332682394945719}
+  - component: {fileID: 2431175006362254410}
   m_Layer: 0
   m_Name: CityTileMiddle
   m_TagString: Untagged
@@ -813,9 +815,37 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &-3744332682394945719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738008963597580953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102abbf9fe76eabaeb894fcdb0efbacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2431175006362254410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738008963597580953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5888d570886f2a419a9e00bb41e7e1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 2
+  SharedRessourcesId: 0
+  Type: 0
+  Cost: 0
 --- !u!1 &5738008964264837881
 GameObject:
   m_ObjectHideFlags: 0

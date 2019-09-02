@@ -4504,12 +4504,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1776057066365120079}
   - component: {fileID: 1776057066365120080}
-  - component: {fileID: 5533078274990514513}
   - component: {fileID: 1776057066365120081}
   - component: {fileID: 1776057066365120082}
   - component: {fileID: 1776057066365120083}
   - component: {fileID: 1776057066365120084}
   - component: {fileID: 4870062386276416399}
+  - component: {fileID: 6757112603079581764}
   m_Layer: 0
   m_Name: CityTileSmall
   m_TagString: Untagged
@@ -4561,22 +4561,6 @@ MonoBehaviour:
   m_EditMode: 0
   m_FlipNormals: 0
   isOnGrid: 1
---- !u!114 &5533078274990514513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1776057066365120085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 102abbf9fe76eabaeb894fcdb0efbacd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: 0
-  SharedRessourcesId: 0
-  Type: 0
-  Cost: 0
 --- !u!33 &1776057066365120081
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4935,7 +4919,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!114 &4870062386276416399
@@ -4950,7 +4934,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102abbf9fe76eabaeb894fcdb0efbacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 0
+--- !u!114 &6757112603079581764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776057066365120085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5888d570886f2a419a9e00bb41e7e1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 1
   SharedRessourcesId: 0
   Type: 0
   Cost: 0

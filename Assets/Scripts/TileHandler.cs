@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileHandler : MonoBehaviour {
+public class TileHandler : MonoBehaviour
+{
 
     public GameProperties GameProperties;
-    [SerializeField]
-    private Tile[] tiles;
+    public GameObject[] Tiles;
+    private GameObject selectedTile;
+    private int selectedIndex;
+
     [SerializeField]
     private Board board;
-    private Tile selectedTile;
-
     public GameEvent UpdateUI;
-	
-	// Update is called once per frame
-	void Update () {
+    public Camera MainCamera;
+
+
+    void Update()
+    {
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedTile != null)
         {
             InteractWithBoard(0);
         }
-		else if (Input.GetMouseButtonDown(0) && selectedTile != null)
+        else if (Input.GetMouseButtonDown(0) && selectedTile != null)
         {
             InteractWithBoard(0);
         }
@@ -28,43 +31,48 @@ public class TileHandler : MonoBehaviour {
         {
             InteractWithBoard(1);
         }
+
+        if (Input.GetMouseButtonDown(2))
+        {
+            selectedTile = null;
+        }
     }
 
     void InteractWithBoard(int action)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Vector3 gridPosition = board.CalculateGridPosition(hit.point);
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            GameObject clickedTile = hit.transform.gameObject;   
+
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile.GetComponent<Tile>() != null)
             {
-                if (action == 0 && board.CheckForBuildingAtPosition(gridPosition) == null)
+                if (action == 0 && board.CheckIfTileEmpty(clickedTile))
                 {
-                    if (GameProperties.Cash >= selectedTile.Cost)
-                    {
-                        GameProperties.Cash -= selectedTile.Cost;
+                    // if (GameProperties.Cash >= selectedTile.Cost)
+                    // {
+                    //     GameProperties.Cash -= selectedTile.Cost;
 
-                        GameProperties.AmountOfStructures[selectedTile.Id]++;
-                        
-                        //TODO:
-                        //board.AddBuilding(selectedTile, gridPosition);
-                    }
+                    GameProperties.AmountOfStructures[selectedIndex]++;
+
+                    board.AddTile(selectedTile, clickedTile);
                 }
-                else if (action == 1 && board.CheckForBuildingAtPosition(gridPosition) != null)
-                {                 
-                    GameProperties.Cash += board.CheckForBuildingAtPosition(gridPosition).Cost/2;
-
-                    //TODO:
-                    //board.RemoveBuilding(gridPosition);
+                else if (action == 1 && !board.CheckIfTileEmpty(clickedTile))
+                {
+                    //GameProperties.Cash += clickedTile.Cost / 2;
+                    board.RemoveTile(clickedTile);
                 }
             }
+
         }
     }
+    
+
 
     public void EnableBuilder(int index)
     {
-        selectedTile = tiles[index];
-        Debug.Log("Selected building: " + selectedTile.Type);
+        selectedTile = Tiles[index];
+        selectedIndex = index + 1;
     }
 }
