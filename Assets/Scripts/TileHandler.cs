@@ -9,10 +9,15 @@ public class TileHandler : MonoBehaviour
     public GameObject[] Tiles;
     private GameObject selectedTile;
     private int lastSelectedType;
+    public RessourceHandler RessourceHandler;
+    public int selectedRessourceGroup;
 
     [SerializeField]
-    private Board board;
-    public GameEvent UpdateUI;
+    public Board board;
+    public GameEvent ShowGroupUI;
+    public GameEvent HideGroupUI;
+    public GameEvent UpdateGroupUI;
+
     public Camera MainCamera;
 
 
@@ -20,55 +25,141 @@ public class TileHandler : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedTile != null)
         {
-            InteractWithBoard(0);
+            ManageTiles(0);
         }
         else if (Input.GetMouseButtonDown(0) && selectedTile != null)
         {
-            InteractWithBoard(0);
+            ManageTiles(0);
+        }
+
+        if (Input.GetMouseButton(0) && selectedTile == null)
+        {
+            ShowTileInfo(0);
         }
 
         if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftShift))
         {
-            InteractWithBoard(1);
+            ManageTiles(1);
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            InteractWithBoard(1);
+            ManageTiles(1);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            selectedTile = null;
+            board.VisibiltyEmptyTile(false);
+            board.isBuildMode = false;
         }
 
         if (Input.GetMouseButton(2))
         {
-            selectedTile = null;
+            HideGroupUI.Raise();
+        }
+
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            selectedRessourceGroup = 0;
+        }
+        else if (Input.GetKey(KeyCode.Alpha1))
+        {
+            selectedRessourceGroup = 1;
+        }
+        else if (Input.GetKey(KeyCode.Alpha2))
+        {
+            selectedRessourceGroup = 2;
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            selectedRessourceGroup = 3;
+        }
+        else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            selectedRessourceGroup = 4;
+        }
+        else if (Input.GetKey(KeyCode.Alpha5))
+        {
+            selectedRessourceGroup = 5;
+        }
+        else if (Input.GetKey(KeyCode.Alpha6))
+        {
+            selectedRessourceGroup = 6;
+        }
+        else if (Input.GetKey(KeyCode.Alpha7))
+        {
+            selectedRessourceGroup = 7;
+        }
+        else if (Input.GetKey(KeyCode.Alpha8))
+        {
+            selectedRessourceGroup = 8;
+        }
+        else if (Input.GetKey(KeyCode.Alpha9))
+        {
+            selectedRessourceGroup = 9;
         }
     }
 
-    void InteractWithBoard(int action)
+    void ManageTiles(int action)
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            GameObject clickedTile = hit.transform.gameObject;
+            GameObject clickedGameObject = hit.transform.gameObject;
+            Tile clickedTile = clickedGameObject.GetComponent<Tile>();
 
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile.GetComponent<Tile>() != null)
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile != null)
             {
-                if (action == 0 && board.CheckIfTileEmpty(clickedTile))
+                if (action == 0 && board.CheckIfTileEmpty(clickedGameObject))
                 {
                     // if (GameProperties.Cash >= selectedTile.Cost)
                     // {
                     //     GameProperties.Cash -= selectedTile.Cost;
 
                     GameProperties.AmountOfStructures[lastSelectedType]++;
-                    board.AddTile(selectedTile, clickedTile);
+                    RessourceHandler.Add(selectedRessourceGroup, board.AddTile(selectedTile, clickedGameObject));
+                    HideGroupUI.Raise();
                 }
-                else if (action == 1 && !board.CheckIfTileEmpty(clickedTile))
+                else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    UpdateGroupUI.Raise();
+                    ShowGroupUI.Raise();
+                }
+                else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
                     //GameProperties.Cash += clickedTile.Cost / 2;
                     GameProperties.AmountOfStructures[lastSelectedType]--;
-                    board.RemoveTile(clickedTile);
+                    RessourceHandler.Remove(board.RemoveTile(clickedGameObject));
+                    UpdateGroupUI.Raise();
                 }
             }
+        }
+    }
 
+    void ShowTileInfo(int action)
+    {
+        Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject clickedGameObject = hit.transform.gameObject;
+            Tile clickedTile = clickedGameObject.GetComponent<Tile>();
+
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile != null)
+            {
+                if (action == 0 && board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    HideGroupUI.Raise();
+                }
+                else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    UpdateGroupUI.Raise();
+                    ShowGroupUI.Raise();
+                }
+            }
         }
     }
 
@@ -78,5 +169,7 @@ public class TileHandler : MonoBehaviour
     {
         selectedTile = Tiles[index];
         lastSelectedType = index + 1;
+        board.VisibiltyEmptyTile(true);
+        board.isBuildMode = true;
     }
 }

@@ -1071,7 +1071,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 0
+  m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!114 &4140927651049688808
 MonoBehaviour:
@@ -1098,6 +1098,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  SharedRessourcesId: 0
+  RessourceGroupId: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 3
   Cost: 0
+  EducationLevel: 0
+  Efficiency: 0
+  AmountOfLocalCitizen: 200
+  AmountOfStudents: 0
+  AmountOfProfessors: 0
+  AmountOfWorkers: 0
+  AmountOfUnemployedCitizens: 0

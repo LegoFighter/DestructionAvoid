@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>/home/michalbilinski/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Tools/RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.sh</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,17 +53,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CanvasController.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Camera\DoubleClickDetectorC.cs" />
      <Compile Include="Assets\Scripts\Camera\TransformExtensions.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
+     <Compile Include="Assets\Scripts\RessourceHandler.cs" />
      <Compile Include="Assets\Scripts\RotationScript.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEvent.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameProperties.cs" />
-     <Compile Include="Assets\Scripts\ScriptableObjects\SharedRessources.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\RessourceGroups.cs" />
      <Compile Include="Assets\Scripts\TileHandler.cs" />
      <Compile Include="Assets\Scripts\Tiles\Empty.cs" />
      <Compile Include="Assets\Scripts\Tiles\Factory.cs" />

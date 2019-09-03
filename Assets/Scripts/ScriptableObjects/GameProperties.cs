@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GameProperties : ScriptableObject
 {
-    public int NextSharedRessourcesId;
     public int Cash;
     public float AverageEducationLevel;
     public int Population;
@@ -13,4 +12,5 @@ public class GameProperties : ScriptableObject
     public float DistanceToFromEarth;
     public int AsteroidSpeed;
     public Dictionary<int, int> AmountOfStructures;
+    public int ActiveRessourceGroup;
 }

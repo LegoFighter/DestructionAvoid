@@ -8,8 +8,29 @@ public class Board : MonoBehaviour
     public GameObject[] Tiles;
     public GameObject emptyTile;
 
+    public bool isBuildMode;
 
-    public void AddTile(GameObject tileToAdd, GameObject tileToReplace)
+
+    void Start()
+    {
+        VisibiltyEmptyTile(false);
+    }
+
+    public void VisibiltyEmptyTile(bool boolean)
+    {
+        Tile tempTile;
+        for (int i = 0; i < Tiles.Length; i++)
+        {
+            tempTile = Tiles[i].GetComponent<Tile>();
+
+            if (tempTile.Type == 0)
+            {
+                Tiles[i].SetActive(boolean);
+            }
+        }
+    }
+
+    public Tile AddTile(GameObject tileToAdd, GameObject tileToReplace)
     {
         int indexToReplace = 0;
 
@@ -22,13 +43,25 @@ public class Board : MonoBehaviour
             }
         }
         Destroy(Tiles[indexToReplace].gameObject);
-        Tiles[indexToReplace] = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
 
+        GameObject tileInstance = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
+        Tiles[indexToReplace] = tileInstance;
+
+        Tile tempTile = tileInstance.GetComponent<Tile>();
+
+        if (!isBuildMode && tempTile.Type == 0)
+        {
+            tileInstance.SetActive(false);
+        }
+
+        return tempTile;
     }
 
-    public void RemoveTile(GameObject tileAtPosition)
+    public Tile RemoveTile(GameObject tileAtPosition)
     {
+
         AddTile(emptyTile, tileAtPosition);
+        return tileAtPosition.GetComponent<Tile>();
     }
 
     public bool CheckIfTileEmpty(GameObject tileAtPosition)
@@ -36,8 +69,4 @@ public class Board : MonoBehaviour
         return tileAtPosition.GetComponent<Tile>().Type == 0;
     }
 
-    // public Vector3 CalculateGridPosition(Vector3 position)
-    // {
-    //     return new Vector3(Mathf.Round(position.x), .5f, Mathf.Round(position.z));
-    // }
 }

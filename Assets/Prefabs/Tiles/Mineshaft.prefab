@@ -440,7 +440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  SharedRessourcesId: 0
+  RessourceGroupId: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 6
   Cost: 0
 --- !u!1 &4945328294986703247

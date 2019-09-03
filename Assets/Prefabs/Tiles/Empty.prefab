@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1033378401764878501}
   - component: {fileID: 7901029340644992215}
   m_Layer: 0
-  m_Name: EmptyTile
+  m_Name: Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 6
+  m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!114 &1033378401764878501
 MonoBehaviour:
@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  SharedRessourcesId: 0
+  RessourceGroupId: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 0
   Cost: 0

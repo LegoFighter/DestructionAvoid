@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public SharedRessources SharedRessources;
     public GameProperties GameProperties;
     public TileHandler TileHandler;
 
     public void Start()
     {
-        GameProperties.NextSharedRessourcesId = 0;
         GameProperties.Cash = 0;
         GameProperties.AverageEducationLevel = 0;
         GameProperties.Population = 0;
@@ -24,5 +22,7 @@ public class GameManager : MonoBehaviour
             GameProperties.AmountOfStructures.Add(i + 1, 0);
         }
     }
+
+
 
 }

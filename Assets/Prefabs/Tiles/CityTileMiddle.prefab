@@ -843,9 +843,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  SharedRessourcesId: 0
+  RessourceGroupId: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 2
   Cost: 0
+  EducationLevel: 0
+  Efficiency: 0
+  AmountOfLocalCitizen: 2000
+  AmountOfStudents: 0
+  AmountOfProfessors: 0
+  AmountOfWorkers: 0
+  AmountOfUnemployedCitizens: 0
 --- !u!1 &5738008964264837881
 GameObject:
   m_ObjectHideFlags: 0
