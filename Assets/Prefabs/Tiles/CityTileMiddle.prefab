@@ -420,9 +420,10 @@ GameObject:
   - component: {fileID: 5738008963597581029}
   - component: {fileID: 5738008963597581028}
   - component: {fileID: 5738008963597580955}
+  - component: {fileID: 8767784239697962716}
   - component: {fileID: 5738008963597580954}
-  - component: {fileID: -3744332682394945719}
   - component: {fileID: 2431175006362254410}
+  - component: {fileID: -7494090806123153690}
   m_Layer: 0
   m_Name: CityTileMiddle
   m_TagString: Untagged
@@ -804,6 +805,24 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &8767784239697962716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738008963597580953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a0f3f10b710b3fca8fd6eadf386abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
+    type: 2}
+  UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
+  RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
+  birthRate: 2
 --- !u!64 &5738008963597580954
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -818,18 +837,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
---- !u!114 &-3744332682394945719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738008963597580953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 102abbf9fe76eabaeb894fcdb0efbacd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2431175006362254410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,13 +854,40 @@ MonoBehaviour:
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 2
   Cost: 0
-  EducationLevel: 0
-  Efficiency: 0
   AmountOfLocalCitizen: 2000
   AmountOfStudents: 0
   AmountOfProfessors: 0
   AmountOfWorkers: 0
   AmountOfUnemployedCitizens: 0
+--- !u!114 &-7494090806123153690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5738008963597580953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: ad58690fda1cf2fe28462c1d803aaab4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8767784239697962716}
+        m_MethodName: OnMinuteTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &5738008964264837881
 GameObject:
   m_ObjectHideFlags: 0

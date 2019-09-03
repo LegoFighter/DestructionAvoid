@@ -7,7 +7,7 @@ public class TileHandler : MonoBehaviour
 
     public GameProperties GameProperties;
     public GameObject[] Tiles;
-    private GameObject selectedTile;
+    private GameObject selectedGameObejct;
     private int lastSelectedType;
     public RessourceHandler RessourceHandler;
     public int selectedRessourceGroup;
@@ -17,22 +17,22 @@ public class TileHandler : MonoBehaviour
     public GameEvent ShowGroupUI;
     public GameEvent HideGroupUI;
     public GameEvent UpdateGroupUI;
-
+    public GameEvent CityPropertiesUpdated;
     public Camera MainCamera;
 
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedTile != null)
+        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedGameObejct != null)
         {
             ManageTiles(0);
         }
-        else if (Input.GetMouseButtonDown(0) && selectedTile != null)
+        else if (Input.GetMouseButtonDown(0) && selectedGameObejct != null)
         {
             ManageTiles(0);
         }
 
-        if (Input.GetMouseButton(0) && selectedTile == null)
+        if (Input.GetMouseButton(0) && selectedGameObejct == null)
         {
             ShowTileInfo(0);
         }
@@ -48,7 +48,7 @@ public class TileHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            selectedTile = null;
+            selectedGameObejct = null;
             board.VisibiltyEmptyTile(false);
             board.isBuildMode = false;
         }
@@ -108,6 +108,7 @@ public class TileHandler : MonoBehaviour
         {
             GameObject clickedGameObject = hit.transform.gameObject;
             Tile clickedTile = clickedGameObject.GetComponent<Tile>();
+            Tile selectedTile = selectedGameObejct.GetComponent<Tile>();
 
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile != null)
             {
@@ -117,22 +118,31 @@ public class TileHandler : MonoBehaviour
                     // {
                     //     GameProperties.Cash -= selectedTile.Cost;
 
-                    GameProperties.AmountOfStructures[lastSelectedType]++;
-                    RessourceHandler.Add(selectedRessourceGroup, board.AddTile(selectedTile, clickedGameObject));
+                    GameProperties.AmountOfTiles++;
+                    GameProperties.Population += selectedTile.AmountOfLocalCitizen;
+                    
+                    RessourceHandler.Add(selectedRessourceGroup, board.AddTile(selectedGameObejct, clickedGameObject));
+                    
                     HideGroupUI.Raise();
+                    CityPropertiesUpdated.Raise();
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
+                    CityPropertiesUpdated.Raise();
                 }
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
                     //GameProperties.Cash += clickedTile.Cost / 2;
-                    GameProperties.AmountOfStructures[lastSelectedType]--;
+                    GameProperties.Population -= clickedTile.AmountOfLocalCitizen;
+                    GameProperties.AmountOfTiles--;
+                    
                     RessourceHandler.Remove(board.RemoveTile(clickedGameObject));
+                    
                     UpdateGroupUI.Raise();
+                    CityPropertiesUpdated.Raise();
                 }
             }
         }
@@ -167,7 +177,7 @@ public class TileHandler : MonoBehaviour
 
     public void EnableBuilder(int index)
     {
-        selectedTile = Tiles[index];
+        selectedGameObejct = Tiles[index];
         lastSelectedType = index + 1;
         board.VisibiltyEmptyTile(true);
         board.isBuildMode = true;

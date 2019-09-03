@@ -53,12 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CanvasController.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Camera\DoubleClickDetectorC.cs" />
      <Compile Include="Assets\Scripts\Camera\TransformExtensions.cs" />
+     <Compile Include="Assets\Scripts\CanvasController.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\RessourceHandler.cs" />
      <Compile Include="Assets\Scripts\RotationScript.cs" />
@@ -69,7 +69,9 @@
      <Compile Include="Assets\Scripts\TileHandler.cs" />
      <Compile Include="Assets\Scripts\Tiles\Empty.cs" />
      <Compile Include="Assets\Scripts\Tiles\Factory.cs" />
-     <Compile Include="Assets\Scripts\Tiles\House.cs" />
+     <Compile Include="Assets\Scripts\Tiles\HouseLarge.cs" />
+     <Compile Include="Assets\Scripts\Tiles\HouseMiddle.cs" />
+     <Compile Include="Assets\Scripts\Tiles\HouseSmall.cs" />
      <Compile Include="Assets\Scripts\Tiles\Mineshaft.cs" />
      <Compile Include="Assets\Scripts\Tiles\NuclearTestArea.cs" />
      <Compile Include="Assets\Scripts\Tiles\RocketCenter.cs" />
@@ -77,6 +79,7 @@
      <Compile Include="Assets\Scripts\Tiles\Street.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\TimeBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
