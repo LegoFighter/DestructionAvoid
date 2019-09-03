@@ -108,7 +108,12 @@ public class TileHandler : MonoBehaviour
         {
             GameObject clickedGameObject = hit.transform.gameObject;
             Tile clickedTile = clickedGameObject.GetComponent<Tile>();
-            Tile selectedTile = selectedGameObejct.GetComponent<Tile>();
+
+            Tile selectedTile = null;
+
+            if (selectedGameObejct != null)
+                selectedTile = selectedGameObejct.GetComponent<Tile>();
+
 
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile != null)
             {
@@ -120,9 +125,9 @@ public class TileHandler : MonoBehaviour
 
                     GameProperties.AmountOfTiles++;
                     GameProperties.Population += selectedTile.AmountOfLocalCitizen;
-                    
+
                     RessourceHandler.Add(selectedRessourceGroup, board.AddTile(selectedGameObejct, clickedGameObject));
-                    
+
                     HideGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
                 }
@@ -138,9 +143,9 @@ public class TileHandler : MonoBehaviour
                     //GameProperties.Cash += clickedTile.Cost / 2;
                     GameProperties.Population -= clickedTile.AmountOfLocalCitizen;
                     GameProperties.AmountOfTiles--;
-                    
+
                     RessourceHandler.Remove(board.RemoveTile(clickedGameObject));
-                    
+
                     UpdateGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
                 }
