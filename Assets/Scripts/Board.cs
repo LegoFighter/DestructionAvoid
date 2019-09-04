@@ -47,14 +47,13 @@ public class Board : MonoBehaviour
         GameObject tileInstance = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
         Tiles[indexToReplace] = tileInstance;
 
-        Tile tempTile = tileInstance.GetComponent<Tile>();
+        Tile tileRef = tileInstance.GetComponent<Tile>();
 
-        if (!isBuildMode && tempTile.Type == 0)
+        if (!isBuildMode && tileRef.Type == 0)
         {
             tileInstance.SetActive(false);
         }
-
-        return tempTile;
+        return tileRef;
     }
 
     public Tile RemoveTile(GameObject tileAtPosition)

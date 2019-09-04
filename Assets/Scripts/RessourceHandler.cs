@@ -8,6 +8,7 @@ public class RessourceHandler : MonoBehaviour
 
     public RessourceGroups RessourceGroups;
 
+    public GameProperties GameProperties;
     private int ressourceGroupsAmount = 10;
 
     public GameEvent GroupsUpdate;
@@ -21,7 +22,7 @@ public class RessourceHandler : MonoBehaviour
         RessourceGroups.AmountOfWorkers = new Dictionary<int, int>();
         RessourceGroups.AmountOfUnemployedCitizens = new Dictionary<int, int>();
 
-        ressourceGroupsAmount = 9;
+        ressourceGroupsAmount = 10;
 
         for (int i = 0; i < ressourceGroupsAmount; i++)
         {
@@ -31,11 +32,12 @@ public class RessourceHandler : MonoBehaviour
 
     }
 
-    public void Add(int destinationGroup, Tile tileToAdd)
+    public void Add(Tile tileToAdd)
     {
-        TileGroups[destinationGroup].Add(tileToAdd);
-        tileToAdd.RessourceGroupId = destinationGroup;
-        AddRessources(destinationGroup, tileToAdd);
+        tileToAdd.RessourceGroupId = GameProperties.ActiveRessourceGroup;
+        
+        TileGroups[tileToAdd.RessourceGroupId].Add(tileToAdd);
+        AddRessources(tileToAdd.RessourceGroupId, tileToAdd);
         GroupsUpdate.Raise();
     }
 
@@ -55,20 +57,20 @@ public class RessourceHandler : MonoBehaviour
         GroupsUpdate.Raise();
     }
 
-    public void Transfer(int destinationGroup, Tile tileToAdd)
+    public void Transfer(Tile tileToAdd)
     {
         Remove(tileToAdd);
-        Add(destinationGroup, tileToAdd);
+        Add(tileToAdd);
         GroupsUpdate.Raise();
     }
 
     private void RemoveRessources(int targetGroup, Tile tile)
     {
-       RessourceGroups.AmountOfLocalCitizen[targetGroup] -= tile.AmountOfLocalCitizen;
-       RessourceGroups.AmountOfStudents[targetGroup] -= tile.AmountOfStudents;
-       RessourceGroups.AmountOfProfessors[targetGroup] -= tile.AmountOfProfessors;
-       RessourceGroups.AmountOfWorkers[targetGroup] -= tile.AmountOfWorkers;
-       RessourceGroups.AmountOfUnemployedCitizens[targetGroup] -= tile.AmountOfUnemployedCitizens;
+        RessourceGroups.AmountOfLocalCitizen[targetGroup] -= tile.AmountOfLocalCitizen;
+        RessourceGroups.AmountOfStudents[targetGroup] -= tile.AmountOfStudents;
+        RessourceGroups.AmountOfProfessors[targetGroup] -= tile.AmountOfProfessors;
+        RessourceGroups.AmountOfWorkers[targetGroup] -= tile.AmountOfWorkers;
+        RessourceGroups.AmountOfUnemployedCitizens[targetGroup] -= tile.AmountOfUnemployedCitizens;
     }
 
     private void AddRessources(int targetGroup, Tile tile)
@@ -80,17 +82,18 @@ public class RessourceHandler : MonoBehaviour
         RessourceGroups.AmountOfUnemployedCitizens[targetGroup] += tile.AmountOfUnemployedCitizens;
     }
 
-    public void MergeGroup(int fromA, int toB)
+    public void MergeGroup(int fromA)
     {
         foreach (var groupMember in TileGroups[fromA])
         {
-            Transfer(toB, groupMember);
+            Transfer(groupMember);
         }
     }
 
-    public void OnGroupsUpdate() {
+    public void OnGroupsUpdate()
+    {
 
-        
+
     }
 
 }

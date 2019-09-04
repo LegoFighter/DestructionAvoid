@@ -19,15 +19,15 @@ public class Asteroid : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            meshRenderer.enabled = false;
-            PlayExplosion();
-            StartCoroutine(WinMessage());
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         meshRenderer.enabled = false;
+    //         PlayExplosion();
+    //         StartCoroutine(WinMessage());
+    //     }
+    // }
 
     void OnTriggerEnter(Collider other)
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileHandler : MonoBehaviour
+public class BoardHandler : MonoBehaviour
 {
 
     public GameProperties GameProperties;
@@ -10,7 +10,6 @@ public class TileHandler : MonoBehaviour
     private GameObject selectedGameObejct;
     private int lastSelectedType;
     public RessourceHandler RessourceHandler;
-    public int selectedRessourceGroup;
 
     [SerializeField]
     public Board board;
@@ -26,27 +25,112 @@ public class TileHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedGameObejct != null)
+        if (Input.GetKey(KeyCode.Alpha0))
         {
-            ManageTiles(0);
+            GameProperties.ActiveRessourceGroup = 0;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
         }
-        else if (Input.GetMouseButtonDown(0) && selectedGameObejct != null)
+        else if (Input.GetKey(KeyCode.Alpha1))
         {
-            ManageTiles(0);
+            GameProperties.ActiveRessourceGroup = 1;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha2))
+        {
+
+            GameProperties.ActiveRessourceGroup = 2;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            GameProperties.ActiveRessourceGroup = 3;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            GameProperties.ActiveRessourceGroup = 4;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha5))
+        {
+            GameProperties.ActiveRessourceGroup = 5;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha6))
+        {
+            GameProperties.ActiveRessourceGroup = 6;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha7))
+        {
+            GameProperties.ActiveRessourceGroup = 7;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha8))
+        {
+            GameProperties.ActiveRessourceGroup = 8;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
+        }
+        else if (Input.GetKey(KeyCode.Alpha9))
+        {
+            GameProperties.ActiveRessourceGroup = 9;
+            UpdateGroupUI.Raise();
+            ShowGroupUI.Raise();
         }
 
-        if (Input.GetMouseButton(0) && selectedGameObejct == null)
+
+        if (board.isBuildMode)
         {
-            ShowTileInfo(0);
+            if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && selectedGameObejct != null)
+            {
+                InteractionBuildMode(0);
+            }
+            else if (Input.GetMouseButtonDown(0) && selectedGameObejct != null)
+            {
+                InteractionBuildMode(0);
+            }
+            else if (Input.GetMouseButton(0) && selectedGameObejct == null)
+            {
+                InteractionInpectMode(0);
+            }
+            
+
+            if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftShift))
+            {
+                //Build Mode: Shift+Right Mouse Button -> Transfer tile to currently selected group;
+                InteractionBuildMode(2);
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                //Right Mouse Button -> Sell Tile;
+                InteractionBuildMode(1);
+            }
         }
 
-        if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftShift))
+        if (!board.isBuildMode)
         {
-            ManageTiles(1);
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            ManageTiles(1);
+            if (Input.GetMouseButton(0))
+            {
+                InteractionInpectMode(0);
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                InteractionInpectMode(1);
+            }
+            else if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftShift))
+            {
+                InteractionInpectMode(1);
+            }
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -57,50 +141,9 @@ public class TileHandler : MonoBehaviour
             HideUIExtensions();
         }
 
-
-        if (Input.GetKey(KeyCode.Alpha0))
-        {
-            selectedRessourceGroup = 0;
-        }
-        else if (Input.GetKey(KeyCode.Alpha1))
-        {
-            selectedRessourceGroup = 1;
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
-        {
-            selectedRessourceGroup = 2;
-        }
-        else if (Input.GetKey(KeyCode.Alpha3))
-        {
-            selectedRessourceGroup = 3;
-        }
-        else if (Input.GetKey(KeyCode.Alpha4))
-        {
-            selectedRessourceGroup = 4;
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            selectedRessourceGroup = 5;
-        }
-        else if (Input.GetKey(KeyCode.Alpha6))
-        {
-            selectedRessourceGroup = 6;
-        }
-        else if (Input.GetKey(KeyCode.Alpha7))
-        {
-            selectedRessourceGroup = 7;
-        }
-        else if (Input.GetKey(KeyCode.Alpha8))
-        {
-            selectedRessourceGroup = 8;
-        }
-        else if (Input.GetKey(KeyCode.Alpha9))
-        {
-            selectedRessourceGroup = 9;
-        }
     }
 
-    void ManageTiles(int action)
+    void InteractionBuildMode(int action)
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -114,7 +157,6 @@ public class TileHandler : MonoBehaviour
             if (selectedGameObejct != null)
                 selectedTile = selectedGameObejct.GetComponent<Tile>();
 
-
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && clickedTile != null)
             {
                 if (action == 0 && board.CheckIfTileEmpty(clickedGameObject))
@@ -126,10 +168,9 @@ public class TileHandler : MonoBehaviour
                     GameProperties.AmountOfTiles++;
                     GameProperties.Population += selectedTile.AmountOfLocalCitizen;
 
-                    RessourceHandler.Add(selectedRessourceGroup, board.AddTile(selectedGameObejct, clickedGameObject));
-
-                    HideGroupUI.Raise();
+                    RessourceHandler.Add(board.AddTile(selectedGameObejct, clickedGameObject));
                     CityPropertiesUpdated.Raise();
+                    UpdateGroupUI.Raise();
 
                     SwitchLaunchUI(selectedTile);
                 }
@@ -140,6 +181,11 @@ public class TileHandler : MonoBehaviour
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
+                }
+                else if (action == 1 && board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    selectedGameObejct = null;
+                    HideUIExtensions();
                 }
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
@@ -152,11 +198,18 @@ public class TileHandler : MonoBehaviour
                     UpdateGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
                 }
+                else if (action == 2 && !board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    RessourceHandler.Transfer(clickedTile);
+                    HideLaunchUI.Raise();
+                    UpdateGroupUI.Raise();
+                    CityPropertiesUpdated.Raise();
+                }
             }
         }
     }
 
-    void ShowTileInfo(int action)
+    void InteractionInpectMode(int action)
     {
         Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -179,11 +232,27 @@ public class TileHandler : MonoBehaviour
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
                 }
+                else if (action == 1 && board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    HideUIExtensions();
+                }
+                else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
+                {
+                    SwitchLaunchUI(clickedTile);
+
+                    RessourceHandler.Transfer(clickedTile);
+                    GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    UpdateGroupUI.Raise();
+                    ShowGroupUI.Raise();
+                }
+
+
+
             }
         }
     }
 
-    
+
     void SwitchLaunchUI(Tile tile)
     {
         if (tile.Type == 7)

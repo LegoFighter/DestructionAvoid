@@ -56,6 +56,7 @@
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Asteroid.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
+     <Compile Include="Assets\Scripts\BoardHandler.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Camera\DoubleClickDetectorC.cs" />
      <Compile Include="Assets\Scripts\Camera\TransformExtensions.cs" />
@@ -69,7 +70,6 @@
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameProperties.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\RessourceGroups.cs" />
-     <Compile Include="Assets\Scripts\TileHandler.cs" />
      <Compile Include="Assets\Scripts\Tiles\Empty.cs" />
      <Compile Include="Assets\Scripts\Tiles\Factory.cs" />
      <Compile Include="Assets\Scripts\Tiles\HouseLarge.cs" />

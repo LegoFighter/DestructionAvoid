@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public GameProperties GameProperties;
     public AsteroidData AsteroidData;
     public GameObject Asteroid;
-    public TileHandler TileHandler;
 
     [Header("Game Events")]
     public GameEvent CityPropertiesUpdated;
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
         GameProperties.AmountOfTiles = 0;
         GameProperties.CountdownHoursLeft = 24;
         GameProperties.CountdownMinutesLeft = 0;
+        GameProperties.ActiveRessourceGroup = 0;
 
         AsteroidData.Asteroid = Asteroid;
         AsteroidData.AsteroidSpeed = 50000;
