@@ -13,7 +13,10 @@ public class RotationScript : MonoBehaviour
     void Update()
     {
         Earth.transform.Rotate(Vector3.up, speedEarthRotation * Time.deltaTime);
-        Asteroid.transform.Rotate(new Vector3(0.25f, .5f, 1), -speedAsteroidRotation * Time.deltaTime);
+        if (Asteroid != null)
+        {
+            Asteroid.transform.Rotate(new Vector3(0.25f, .5f, 1), -speedAsteroidRotation * Time.deltaTime);
+        }
     }
 
 }

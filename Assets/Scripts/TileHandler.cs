@@ -14,12 +14,15 @@ public class TileHandler : MonoBehaviour
 
     [SerializeField]
     public Board board;
+    public Camera MainCamera;
+
+    [Header("Game Events")]
     public GameEvent ShowGroupUI;
     public GameEvent HideGroupUI;
     public GameEvent UpdateGroupUI;
     public GameEvent CityPropertiesUpdated;
-    public Camera MainCamera;
-
+    public GameEvent ShowLaunchUI;
+    public GameEvent HideLaunchUI;
 
     void Update()
     {
@@ -51,12 +54,9 @@ public class TileHandler : MonoBehaviour
             selectedGameObejct = null;
             board.VisibiltyEmptyTile(false);
             board.isBuildMode = false;
+            HideUIExtensions();
         }
 
-        if (Input.GetMouseButton(2))
-        {
-            HideGroupUI.Raise();
-        }
 
         if (Input.GetKey(KeyCode.Alpha0))
         {
@@ -130,9 +130,12 @@ public class TileHandler : MonoBehaviour
 
                     HideGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
+
+                    SwitchLaunchUI(selectedTile);
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
+                    SwitchLaunchUI(clickedTile);
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
@@ -145,7 +148,7 @@ public class TileHandler : MonoBehaviour
                     GameProperties.AmountOfTiles--;
 
                     RessourceHandler.Remove(board.RemoveTile(clickedGameObject));
-
+                    HideLaunchUI.Raise();
                     UpdateGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
                 }
@@ -166,10 +169,12 @@ public class TileHandler : MonoBehaviour
             {
                 if (action == 0 && board.CheckIfTileEmpty(clickedGameObject))
                 {
-                    HideGroupUI.Raise();
+                    HideUIExtensions();
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
+                    SwitchLaunchUI(clickedTile);
+
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
@@ -178,7 +183,24 @@ public class TileHandler : MonoBehaviour
         }
     }
 
+    
+    void SwitchLaunchUI(Tile tile)
+    {
+        if (tile.Type == 7)
+        {
+            ShowLaunchUI.Raise();
+        }
+        else
+        {
+            HideLaunchUI.Raise();
+        }
+    }
 
+    void HideUIExtensions()
+    {
+        HideGroupUI.Raise();
+        HideLaunchUI.Raise();
+    }
 
     public void EnableBuilder(int index)
     {

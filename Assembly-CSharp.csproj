@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Asteroid.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Camera\DoubleClickDetectorC.cs" />
@@ -61,7 +62,9 @@
      <Compile Include="Assets\Scripts\CanvasController.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
      <Compile Include="Assets\Scripts\RessourceHandler.cs" />
+     <Compile Include="Assets\Scripts\Rocket.cs" />
      <Compile Include="Assets\Scripts\RotationScript.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\AsteroidData.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEvent.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameEventListener.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\GameProperties.cs" />
@@ -80,6 +83,7 @@
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\TimeBehaviour.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

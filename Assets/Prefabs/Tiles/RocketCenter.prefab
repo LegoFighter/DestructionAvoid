@@ -4879,6 +4879,7 @@ GameObject:
   - component: {fileID: 7175743792900349944}
   - component: {fileID: 594207965395986325}
   - component: {fileID: -3997177993324191181}
+  - component: {fileID: 2489333967657305063}
   m_Layer: 0
   m_Name: RocketCenter
   m_TagString: Untagged
@@ -4901,6 +4902,7 @@ Transform:
   - {fileID: 7175743792455910009}
   - {fileID: 7175743791388196807}
   - {fileID: 7175743790976597274}
+  - {fileID: 8578673787301085073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5288,6 +5290,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39da7b45d8dd2b462a1b3bd2d9f55958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rocket: {fileID: 177032641092367363, guid: ccd3aa0deeccc91599f1c3efc6a5b023, type: 3}
+  RocketSpawnPoint: {fileID: 8578673787301085073}
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
+  AsteroidData: {fileID: 11400000, guid: 4d2231e1d0d1582fca720481598b9886, type: 2}
+  RocketIsLaunchable: 1
 --- !u!114 &-3997177993324191181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5305,3 +5312,67 @@ MonoBehaviour:
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 7
   Cost: 0
+  AmountOfLocalCitizen: 0
+  AmountOfStudents: 0
+  AmountOfProfessors: 0
+  AmountOfWorkers: 0
+  AmountOfUnemployedCitizens: 0
+--- !u!114 &2489333967657305063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175743792900349947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: ac539b4e6c67e2d699aa41f0d29aad93, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 594207965395986325}
+        m_MethodName: LaunchRockets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!1 &7247232545017354475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8578673787301085073}
+  m_Layer: 0
+  m_Name: RocketSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8578673787301085073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247232545017354475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: -6, z: -12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7175743792900349949}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

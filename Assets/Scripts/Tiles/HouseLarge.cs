@@ -23,7 +23,6 @@ public class HouseLarge : MonoBehaviour
     {
         baseTile = GetComponent<Tile>();
     }
-
     public void OnMinuteTick()
     {
         populationIncrease();

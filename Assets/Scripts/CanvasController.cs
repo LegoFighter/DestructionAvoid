@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class CanvasController : MonoBehaviour
 {
     [Header("Shared Data")]
     public GameProperties GameProperties;
     public RessourceGroups RessourceGroups;
+    public AsteroidData AsteroidData;
 
     [Header("Groups")]
-    public GameObject GroupWindow;
+    public GameObject GroupUI;
     public TextMeshProUGUI groupName;
     public TextMeshProUGUI localCitizen;
     public TextMeshProUGUI students;
@@ -20,23 +21,69 @@ public class CanvasController : MonoBehaviour
 
 
     [Header("City Properties")]
-    [SerializeField]
     public TextMeshProUGUI Cash;
     public TextMeshProUGUI Population;
-    public TextMeshProUGUI AsteroidSpeed;
     public TextMeshProUGUI StageOfRocketCompletion;
     public TextMeshProUGUI AmountOfStructures;
 
+    [Header("Asteroid And Launch")]
+    // public TextMeshProUGUI AsteroidSpeed;
+    // public TextMeshProUGUI AsteroidDistanceFromEarth;
+    public GameObject LaunchUI;
+
 
     [Header("Countdown")]
-    [SerializeField]
     public TextMeshProUGUI Countdown;
+
+
+    [Header("Won")]
+    public GameObject WonUI;
+    public TextMeshProUGUI WinStatus;
+    public TextMeshProUGUI PlayTime;
 
     void Start()
     {
-        GroupWindow.SetActive(false);
+        GroupUI.SetActive(false);
+        LaunchUI.SetActive(false);
+        WonUI.SetActive(false);
     }
 
+    public void ShowWinUI()
+    {
+        WinStatus.text = "You Won!";
+        int secondsSinceStart = (int)Time.timeSinceLevelLoad;
+        int hours = secondsSinceStart / 3600;
+        int minutes= secondsSinceStart / 60;
+        int seconds = secondsSinceStart % 60;
+
+        PlayTime.text = "You beat the game in " + timeFormatter(hours) + ":" + timeFormatter(minutes) + ":" + timeFormatter(seconds) + ".";
+        WonUI.SetActive(true);
+    }
+
+    private string timeFormatter(int unit)
+    {
+        var result = "";
+        if (unit < 10)
+        {
+            result += "0" + unit;
+        }
+        else if (unit == 0)
+        {
+            result += "00";
+        }
+        else
+        {
+            result += unit;
+        }
+        return result;
+    }
+
+    public void ShowLooseUI()
+    {
+        WinStatus.text = "You Lost.";
+        PlayTime.text = "Better luck next time!";
+        WonUI.SetActive(true);
+    }
     public void UpdateCountdown()
     {
         if (GameProperties.CountdownMinutesLeft == 0)
@@ -51,24 +98,42 @@ public class CanvasController : MonoBehaviour
         {
             Countdown.text = GameProperties.CountdownHoursLeft + ":" + GameProperties.CountdownMinutesLeft;
         }
+    }
 
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void UpdateCityPropertiesUI()
     {
         Cash.text = GameProperties.Cash + "$";
         Population.text = GameProperties.Population.ToString();
-        AsteroidSpeed.text = GameProperties.AsteroidSpeed + " km/h";
         StageOfRocketCompletion.text = GameProperties.StageOfRocketCompletion + " %";
         AmountOfStructures.text = GameProperties.AmountOfTiles + " tiles";
     }
 
+    public void UpdateAsteroidProperties()
+    {
+        // AsteroidSpeed.text = AsteroidData.AsteroidSpeed + " km/h";
+        // AsteroidDistanceFromEarth.text = AsteroidData.AsteroidSpeed + " km";
+    }
+
+    public void ShowLaunchUI()
+    {
+        LaunchUI.SetActive(true);
+    }
+
+    public void HideLaunchUI()
+    {
+        LaunchUI.SetActive(false);
+    }
 
     public void ShowGroupUI()
     {
-        if (!GroupWindow.activeSelf)
+        if (!GroupUI.activeSelf)
         {
-            GroupWindow.SetActive(true);
+            GroupUI.SetActive(true);
         }
     }
 
@@ -84,7 +149,7 @@ public class CanvasController : MonoBehaviour
 
     public void HideGroupUI()
     {
-        GroupWindow.SetActive(false);
+        GroupUI.SetActive(false);
     }
 
 }
