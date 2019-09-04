@@ -26,9 +26,7 @@ public class CanvasController : MonoBehaviour
     public TextMeshProUGUI StageOfRocketCompletion;
     public TextMeshProUGUI AmountOfStructures;
 
-    [Header("Asteroid And Launch")]
-    // public TextMeshProUGUI AsteroidSpeed;
-    // public TextMeshProUGUI AsteroidDistanceFromEarth;
+    [Header("Launch")]
     public GameObject LaunchUI;
 
 
@@ -41,11 +39,46 @@ public class CanvasController : MonoBehaviour
     public TextMeshProUGUI WinStatus;
     public TextMeshProUGUI PlayTime;
 
+    [Header("Information")]
+    public GameObject InformationUI;
+    public TextMeshProUGUI[] infoTextField;
+
+    public float HideInformationDelay = 3;
+
+
+    public void ShowNewInfoMessage(string infoText)
+    {
+        InformationUI.SetActive(true);
+        for (int i = infoTextField.Length - 1; i > 0; i--)
+        {
+            infoTextField[i].text = infoTextField[i - 1].text;
+        }
+        infoTextField[0].text = infoText;
+        StartCoroutine(HideInfoBox());
+    }
+
+    IEnumerator HideInfoBox()
+    {
+        yield return new WaitForSecondsRealtime(HideInformationDelay);
+        InformationUI.SetActive(false);
+        ClearInformationBox();
+    }
+
+    void ClearInformationBox()
+    {
+        for (int i = 0; i < infoTextField.Length; i++)
+        {
+            infoTextField[i].text = "";
+        }
+    }
+
     void Start()
     {
         GroupUI.SetActive(false);
         LaunchUI.SetActive(false);
         WonUI.SetActive(false);
+        InformationUI.SetActive(false);
+        ClearInformationBox();
     }
 
     public void ShowWinUI()
@@ -53,7 +86,7 @@ public class CanvasController : MonoBehaviour
         WinStatus.text = "You Won!";
         int secondsSinceStart = (int)Time.timeSinceLevelLoad;
         int hours = secondsSinceStart / 3600;
-        int minutes= secondsSinceStart / 60;
+        int minutes = secondsSinceStart / 60;
         int seconds = secondsSinceStart % 60;
 
         PlayTime.text = "You beat the game in " + timeFormatter(hours) + ":" + timeFormatter(minutes) + ":" + timeFormatter(seconds) + ".";

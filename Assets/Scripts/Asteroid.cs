@@ -12,11 +12,14 @@ public class Asteroid : MonoBehaviour
     private MeshRenderer meshRenderer;
     public GameEvent AsteroidDestroyd;
 
+    private BoxCollider boxCollider;
+
 
     void Start()
     {
         Particles = new List<ParticleSystem>();
         meshRenderer = GetComponent<MeshRenderer>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     // void Update()
@@ -39,14 +42,19 @@ public class Asteroid : MonoBehaviour
 
             if (HP <= 0)
             {
-                HP = 0;
-                meshRenderer.enabled = false;
-                PlayExplosion();
-                StartCoroutine(WinMessage());
+                Destroy(gameObject);
             }
         }
     }
 
+    void OnDestroy()
+    {
+        HP = 0;
+        meshRenderer.enabled = false;
+        boxCollider.enabled = false;
+        PlayExplosion();
+        AsteroidDestroyd.Raise();       
+    }
 
 
 
@@ -57,16 +65,4 @@ public class Asteroid : MonoBehaviour
             Particles.Add(Instantiate(item, ExplosionPoint.transform.position, Quaternion.identity, ExplosionPoint.transform));
         }
     }
-
-    IEnumerator WinMessage()
-    {
-        yield return new WaitForSeconds(3);
-
-        foreach (var item in Particles)
-        {
-            Destroy(item.gameObject);
-        }
-        AsteroidDestroyd.Raise();
-    }
-
 }

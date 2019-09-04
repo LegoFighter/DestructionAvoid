@@ -123,7 +123,7 @@ public class BoardHandler : MonoBehaviour
                 InteractionInpectMode(0);
             }
 
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 InteractionInpectMode(1);
             }
@@ -168,7 +168,8 @@ public class BoardHandler : MonoBehaviour
                     GameProperties.AmountOfTiles++;
                     GameProperties.Population += selectedTile.AmountOfLocalCitizen;
 
-                    RessourceHandler.Add(board.AddTile(selectedGameObejct, clickedGameObject));
+                    RessourceHandler.Add(board.AddTile(selectedGameObejct, clickedGameObject));                   
+
                     CityPropertiesUpdated.Raise();
                     UpdateGroupUI.Raise();
 
@@ -245,9 +246,6 @@ public class BoardHandler : MonoBehaviour
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
                 }
-
-
-
             }
         }
     }

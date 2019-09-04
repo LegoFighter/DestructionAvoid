@@ -2651,6 +2651,7 @@ GameObject:
   - component: {fileID: 177032641092367363}
   - component: {fileID: 251436255272810116}
   - component: {fileID: 6665147944100800276}
+  - component: {fileID: 760831758370542023}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Rocket
@@ -2665,7 +2666,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5352702233912998235}
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2678,7 +2679,7 @@ Transform:
   - {fileID: 5426063821937729083}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &177032641092367363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2696,6 +2697,7 @@ MonoBehaviour:
   Speed: 200
   SelfDestructDelay: 30
   Explosion: {fileID: 100000, guid: 8e1dcf1924b1945fcaab73df0affd2ab, type: 3}
+  RocketSelfDestruct: {fileID: 11400000, guid: 1dc00172de2b07d708a7f161fd741c11, type: 2}
 --- !u!65 &251436255272810116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2717,14 +2719,26 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5352702233912998235}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!75 &760831758370542023
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352702233912998235}
+  m_Enabled: 1
+  m_Force: {x: 0, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &5352702234010877591
 GameObject:
   m_ObjectHideFlags: 0

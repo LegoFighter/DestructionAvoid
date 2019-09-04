@@ -4,45 +4,59 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    public Transform Target;
+    public GameObject Target;
     public int Damage;
-    public float Speed = 1;
+    public float Speed = 3;
     public float SelfDestructDelay = 30;
     public GameObject Explosion;
+    private MeshRenderer[] MeshRenderer;
+    private ParticleSystem ParticleSystem;
+
+    public GameEvent RocketSelfDestruct;
 
 
     void Start()
     {
-        StartCoroutine(DestroyTimer());
+        StartCoroutine(SelfDestruct());
+        MeshRenderer = GetComponentsInChildren<MeshRenderer>();
+        ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void LateUpdate()
     {
         if (Target != null)
         {
-            float step = Speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
-            transform.LookAt(Target);
+            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * Speed);
         }
+
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Asteroid"))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
-            {
-                Instantiate(Explosion, hit.point, Quaternion.identity);
-            }
-            //Destroy(this.gameObject);
-        }
+        PlayExplosion();
+        StartCoroutine(Destroy());
     }
 
-    IEnumerator DestroyTimer()
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+
+    IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(SelfDestructDelay);
-        Debug.Log("Rocket selfdestruct.");
-        Destroy(this.gameObject);
+        PlayExplosion();
+        RocketSelfDestruct.Raise();
+        StartCoroutine(Destroy());
+    }
+    void PlayExplosion()
+    {
+        Instantiate(Explosion, transform.position, transform.rotation, transform);
+        foreach (var mesh in MeshRenderer)
+        {
+            mesh.enabled = false;
+        }
+        ParticleSystem.Stop();
     }
 }
