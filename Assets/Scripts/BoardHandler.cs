@@ -169,6 +169,7 @@ public class BoardHandler : MonoBehaviour
                         GameProperties.Cash -= selectedTile.Cost;
                         GameProperties.AmountOfTiles++;
                         board.AddTile(selectedGameObejct, clickedGameObject);
+                        selectedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                         CityPropertiesUpdated.Raise();
                         UpdateGroupUI.Raise();
                         TileBuild.Raise();

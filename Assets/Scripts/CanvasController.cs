@@ -189,7 +189,7 @@ public class CanvasController : MonoBehaviour
 
     public void UpdateGroupUI()
     {
-        GroupName.text = "Group " + GameProperties.ActiveRessourceGroup;
+        GroupName.text = "Ressource Group " + GameProperties.ActiveRessourceGroup;
         UnemployedCitizen.text = RessourceGroups.UnemployedCitizen[GameProperties.ActiveRessourceGroup].ToString();
         RawMaterial.text = RessourceGroups.RawMaterials[GameProperties.ActiveRessourceGroup].ToString();
         ProcessedMaterial.text = RessourceGroups.ProcessedMaterials[GameProperties.ActiveRessourceGroup].ToString();
