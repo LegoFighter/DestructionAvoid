@@ -11,6 +11,8 @@ public class RocketCenter : MonoBehaviour
     public AsteroidData AsteroidData;
     public bool RocketIsLaunchable = true;
 
+    public GameEvent RocketLaunched;
+
 
     public void LaunchRockets()
     {
@@ -23,6 +25,7 @@ public class RocketCenter : MonoBehaviour
             Rocket.Damage = 50;
             Rocket.Speed = 200;
             Rocket.SelfDestructDelay = 3;
+            RocketLaunched.Raise();
         }
     }
 

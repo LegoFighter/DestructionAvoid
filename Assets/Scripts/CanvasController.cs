@@ -12,15 +12,15 @@ public class CanvasController : MonoBehaviour
 
     [Header("Groups")]
     public GameObject GroupUI;
-    public TextMeshProUGUI groupName;
-    public TextMeshProUGUI localCitizen;
-    public TextMeshProUGUI students;
-    public TextMeshProUGUI professors;
-    public TextMeshProUGUI workers;
-    public TextMeshProUGUI unemployed;
+    public TextMeshProUGUI GroupName;
+    public TextMeshProUGUI UnemployedCitizen;
+    public TextMeshProUGUI RawMaterial;
+    public TextMeshProUGUI ProcessedMaterial;
 
 
     [Header("City Properties")]
+    
+    public GameObject CityPropertiesUI;
     public TextMeshProUGUI Cash;
     public TextMeshProUGUI Population;
     public TextMeshProUGUI StageOfRocketCompletion;
@@ -43,18 +43,35 @@ public class CanvasController : MonoBehaviour
     public GameObject InformationUI;
     public TextMeshProUGUI[] infoTextField;
 
+    [Header("Asteroid")]
+    public GameObject AsteroidUI;
+
     public float HideInformationDelay = 3;
+    private Coroutine hideInformationCoroutin;
 
 
     public void ShowNewInfoMessage(string infoText)
     {
+        if (hideInformationCoroutin != null)
+            StopCoroutine(hideInformationCoroutin);
+
+
         InformationUI.SetActive(true);
+
         for (int i = infoTextField.Length - 1; i > 0; i--)
         {
             infoTextField[i].text = infoTextField[i - 1].text;
         }
         infoTextField[0].text = infoText;
-        StartCoroutine(HideInfoBox());
+
+        hideInformationCoroutin = StartCoroutine(HideInfoBox());
+    }
+
+    public void HideUI() {
+        CityPropertiesUI.SetActive(false);
+        AsteroidUI.SetActive(false);
+        GroupUI.SetActive(false);
+        LaunchUI.SetActive(false);
     }
 
     IEnumerator HideInfoBox()
@@ -172,12 +189,11 @@ public class CanvasController : MonoBehaviour
 
     public void UpdateGroupUI()
     {
-        groupName.text = "Group " + GameProperties.ActiveRessourceGroup;
-        localCitizen.text = RessourceGroups.AmountOfLocalCitizen[GameProperties.ActiveRessourceGroup].ToString();
-        students.text = RessourceGroups.AmountOfStudents[GameProperties.ActiveRessourceGroup].ToString();
-        professors.text = RessourceGroups.AmountOfProfessors[GameProperties.ActiveRessourceGroup].ToString();
-        workers.text = RessourceGroups.AmountOfWorkers[GameProperties.ActiveRessourceGroup].ToString();
-        unemployed.text = RessourceGroups.AmountOfUnemployedCitizens[GameProperties.ActiveRessourceGroup].ToString();
+        GroupName.text = "Group " + GameProperties.ActiveRessourceGroup;
+        UnemployedCitizen.text = RessourceGroups.UnemployedCitizen[GameProperties.ActiveRessourceGroup].ToString();
+        RawMaterial.text = RessourceGroups.RawMaterials[GameProperties.ActiveRessourceGroup].ToString();
+        ProcessedMaterial.text = RessourceGroups.ProcessedMaterials[GameProperties.ActiveRessourceGroup].ToString();
+
     }
 
     public void HideGroupUI()

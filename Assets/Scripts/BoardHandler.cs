@@ -23,6 +23,9 @@ public class BoardHandler : MonoBehaviour
     public GameEvent ShowLaunchUI;
     public GameEvent HideLaunchUI;
 
+    public GameEvent TileBuild;
+    public GameEvent TileSold;
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Alpha0))
@@ -102,7 +105,7 @@ public class BoardHandler : MonoBehaviour
             {
                 InteractionInpectMode(0);
             }
-            
+
 
             if (Input.GetMouseButton(1) && Input.GetKey(KeyCode.LeftShift))
             {
@@ -161,19 +164,16 @@ public class BoardHandler : MonoBehaviour
             {
                 if (action == 0 && board.CheckIfTileEmpty(clickedGameObject))
                 {
-                    // if (GameProperties.Cash >= selectedTile.Cost)
-                    // {
-                    //     GameProperties.Cash -= selectedTile.Cost;
-
-                    GameProperties.AmountOfTiles++;
-                    GameProperties.Population += selectedTile.AmountOfLocalCitizen;
-
-                    RessourceHandler.Add(board.AddTile(selectedGameObejct, clickedGameObject));                   
-
-                    CityPropertiesUpdated.Raise();
-                    UpdateGroupUI.Raise();
-
-                    SwitchLaunchUI(selectedTile);
+                    if (GameProperties.Cash >= selectedTile.Cost)
+                    {
+                        GameProperties.Cash -= selectedTile.Cost;
+                        GameProperties.AmountOfTiles++;
+                        board.AddTile(selectedGameObejct, clickedGameObject);
+                        CityPropertiesUpdated.Raise();
+                        UpdateGroupUI.Raise();
+                        TileBuild.Raise();
+                        SwitchLaunchUI(selectedTile);
+                    }
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
@@ -190,18 +190,17 @@ public class BoardHandler : MonoBehaviour
                 }
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
-                    //GameProperties.Cash += clickedTile.Cost / 2;
-                    GameProperties.Population -= clickedTile.AmountOfLocalCitizen;
+                    GameProperties.Cash += clickedTile.Cost / 2;
                     GameProperties.AmountOfTiles--;
-
-                    RessourceHandler.Remove(board.RemoveTile(clickedGameObject));
+                    board.RemoveTile(clickedGameObject);
                     HideLaunchUI.Raise();
                     UpdateGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
+                    TileSold.Raise();
                 }
                 else if (action == 2 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
-                    RessourceHandler.Transfer(clickedTile);
+                    clickedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                     HideLaunchUI.Raise();
                     UpdateGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
@@ -241,7 +240,7 @@ public class BoardHandler : MonoBehaviour
                 {
                     SwitchLaunchUI(clickedTile);
 
-                    RessourceHandler.Transfer(clickedTile);
+                    clickedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();

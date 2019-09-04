@@ -39,6 +39,15 @@ public class GameManager : MonoBehaviour
         CityPropertiesUpdated.Raise();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            CountdownOver.Raise();
+            StartCoroutine(GameOverTimer());
+        }
+    }
+
     public void CountdownMinute()
     {
         if (runningState)
@@ -49,9 +58,9 @@ public class GameManager : MonoBehaviour
 
                 if (GameProperties.CountdownHoursLeft == 0 && GameProperties.CountdownMinutesLeft == 0)
                 {
+                    runningState = false;
                     CountdownOver.Raise();
                     StartCoroutine(GameOverTimer());
-                    runningState = false;
                 }
                 GameProperties.CountdownMinutesLeft = 59;
             }

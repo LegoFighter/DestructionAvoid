@@ -21,21 +21,5 @@ public class HouseSmall : MonoBehaviour
         baseTile = GetComponent<Tile>();
     }
 
-    public void OnMinuteTick()
-    {
-        populationIncrease();
-    }
-
-    private void populationIncrease()
-    {
-        int bornCitizen = (int)(baseTile.AmountOfLocalCitizen / birthRate);
-        baseTile.AmountOfLocalCitizen += bornCitizen;
-        GameProperties.Population += bornCitizen;
-
-        RessourceGroups.AmountOfLocalCitizen[baseTile.RessourceGroupId] += bornCitizen;
-
-        CityPropertiesUpdated.Raise();
-        UpdateGroups.Raise();
-
-    }
+ 
 }

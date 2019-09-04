@@ -5296,6 +5296,7 @@ MonoBehaviour:
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   AsteroidData: {fileID: 11400000, guid: 4d2231e1d0d1582fca720481598b9886, type: 2}
   RocketIsLaunchable: 1
+  RocketLaunched: {fileID: 11400000, guid: 681ffe72cfd861fbbad3d52ebea23011, type: 2}
 --- !u!114 &-3997177993324191181
 MonoBehaviour:
   m_ObjectHideFlags: 0

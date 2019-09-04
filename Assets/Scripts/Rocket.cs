@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
     public GameObject Explosion;
     private MeshRenderer[] MeshRenderer;
     private ParticleSystem ParticleSystem;
-
+    private Collider[] Collider;
     public GameEvent RocketSelfDestruct;
 
 
@@ -20,6 +20,7 @@ public class Rocket : MonoBehaviour
         StartCoroutine(SelfDestruct());
         MeshRenderer = GetComponentsInChildren<MeshRenderer>();
         ParticleSystem = GetComponentInChildren<ParticleSystem>();
+        Collider = GetComponentsInChildren<Collider>();
     }
 
     void LateUpdate()
@@ -46,6 +47,10 @@ public class Rocket : MonoBehaviour
     IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(SelfDestructDelay);
+        foreach (var item in Collider)
+        {
+            item.enabled = false;
+        }
         PlayExplosion();
         RocketSelfDestruct.Raise();
         StartCoroutine(Destroy());

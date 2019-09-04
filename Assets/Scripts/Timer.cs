@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     public GameEvent OnHour;
     public GameEvent OnMinute;
+    public GameEvent OnQuarter;
     [SerializeField]
     private float OnMinuteDuration = 5;
     [SerializeField]
@@ -35,6 +36,13 @@ public class Timer : MonoBehaviour
             {
                 currentMinute++;
             }
+
+            if (currentMinute == 0 || currentMinute == 15 || currentMinute == 30 || currentMinute == 45)
+            {
+                OnQuarter.Raise();
+            }
+
+
             yield return new WaitForSecondsRealtime(OnMinuteDuration);
         }
     }

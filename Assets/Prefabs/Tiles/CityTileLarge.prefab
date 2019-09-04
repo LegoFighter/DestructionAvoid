@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: -4664321345984470093}
   - component: {fileID: 4038307530010160288}
   - component: {fileID: 5136244065561610476}
+  - component: {fileID: -3999996092458013976}
   m_Layer: 0
   m_Name: CityTileLarge
   m_TagString: Untagged
@@ -1091,6 +1092,7 @@ MonoBehaviour:
   UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
+  AmountOfCitizen: 2000
   birthRate: 2
 --- !u!114 &4038307530010160288
 MonoBehaviour:
@@ -1106,14 +1108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   RessourceGroupId: 0
-  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 3
   Cost: 0
-  AmountOfLocalCitizen: 20000
-  AmountOfStudents: 0
-  AmountOfProfessors: 0
-  AmountOfWorkers: 0
-  AmountOfUnemployedCitizens: 0
 --- !u!114 &5136244065561610476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,6 +1128,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4664321345984470093}
         m_MethodName: OnMinuteTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &-3999996092458013976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262350614160035329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 6293910e9d885e4ae900d6975153fa61, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4664321345984470093}
+        m_MethodName: OnQuarterTick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
