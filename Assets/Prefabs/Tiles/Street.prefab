@@ -1118,9 +1118,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   RessourceGroupId: 0
-  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   Type: 4
   Cost: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
+  RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
+  CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
+    type: 2}
+  UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
+  LocalRessources: 
+  AmountRessourcesMax: 000000000000000000000000000000000000000000000000
+  RunningCosts: 000000000000000000000000000000000000000000000000
+  WearPerHour: []
+  MaximalHarvestRates: 000000000000000000000000000000000000000000000000
+  MaterialCost: 
+  ProductionOutput: 
+  MaximalProductionCount: 0
+  TileEfficiency: 0
 --- !u!1 &2274754473398362449
 GameObject:
   m_ObjectHideFlags: 0

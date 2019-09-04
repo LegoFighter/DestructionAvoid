@@ -9,7 +9,6 @@ public class BoardHandler : MonoBehaviour
     public GameObject[] Tiles;
     private GameObject selectedGameObejct;
     private int lastSelectedType;
-    public RessourceHandler RessourceHandler;
 
     [SerializeField]
     public Board board;
@@ -25,6 +24,7 @@ public class BoardHandler : MonoBehaviour
 
     public GameEvent TileBuild;
     public GameEvent TileSold;
+    public GameEvent ShowTileDetails;
 
     void Update()
     {
@@ -239,8 +239,11 @@ public class BoardHandler : MonoBehaviour
                 }
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
-                    SwitchLaunchUI(clickedTile);
 
+                    GameProperties.SelectedTile = clickedTile;
+                    ShowTileDetails.Raise();
+                    
+                    SwitchLaunchUI(clickedTile);
                     clickedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();

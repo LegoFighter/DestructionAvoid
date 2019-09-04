@@ -19,7 +19,7 @@ public class CanvasController : MonoBehaviour
 
 
     [Header("City Properties")]
-    
+
     public GameObject CityPropertiesUI;
     public TextMeshProUGUI Cash;
     public TextMeshProUGUI Population;
@@ -49,6 +49,19 @@ public class CanvasController : MonoBehaviour
     public float HideInformationDelay = 3;
     private Coroutine hideInformationCoroutin;
 
+    [Header("Tile Details")]
+    public GameObject TileUI;
+
+
+    public void HideTileUI()
+    {
+        TileUI.SetActive(false);
+    }
+
+    public void ShowTileUI()
+    {
+        TileUI.SetActive(true);
+    }
 
     public void ShowNewInfoMessage(string infoText)
     {
@@ -67,11 +80,13 @@ public class CanvasController : MonoBehaviour
         hideInformationCoroutin = StartCoroutine(HideInfoBox());
     }
 
-    public void HideUI() {
+    public void HideUI()
+    {
         CityPropertiesUI.SetActive(false);
         AsteroidUI.SetActive(false);
         GroupUI.SetActive(false);
         LaunchUI.SetActive(false);
+        HideTileUI();
     }
 
     IEnumerator HideInfoBox()
@@ -95,6 +110,7 @@ public class CanvasController : MonoBehaviour
         LaunchUI.SetActive(false);
         WonUI.SetActive(false);
         InformationUI.SetActive(false);
+        HideTileUI();
         ClearInformationBox();
     }
 

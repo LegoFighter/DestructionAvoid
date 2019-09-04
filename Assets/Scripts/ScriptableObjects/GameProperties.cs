@@ -13,5 +13,5 @@ public class GameProperties : ScriptableObject
     public int ActiveRessourceGroup;
     public int CountdownMinutesLeft;
     public int CountdownHoursLeft;
-    
+    public Tile SelectedTile;
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public GameProperties GameProperties;
     public AsteroidData AsteroidData;
+    public RessourceGroups RessourceGroups;
+    private int ressourceGroupsAmount = 10;
     public GameObject Asteroid;
 
     [Header("Game Events")]
@@ -34,6 +36,25 @@ public class GameManager : MonoBehaviour
         AsteroidData.Asteroid = Asteroid;
         AsteroidData.AsteroidSpeed = 50000;
         AsteroidData.DistanceToFromEarth = 1000000;
+
+        RessourceGroups.UnemployedCitizen = new Dictionary<int, int>();
+        RessourceGroups.RawMaterials = new Dictionary<int, int>();
+        RessourceGroups.ProcessedMaterials = new Dictionary<int, int>();
+        RessourceGroups.Students = new Dictionary<int, int>();
+        RessourceGroups.Workers = new Dictionary<int, int>();
+        RessourceGroups.Professors = new Dictionary<int, int>();
+
+        ressourceGroupsAmount = 10;
+
+        for (int i = 0; i < ressourceGroupsAmount; i++)
+        {
+            RessourceGroups.UnemployedCitizen.Add(i, 0);
+            RessourceGroups.RawMaterials.Add(i, 0);
+            RessourceGroups.ProcessedMaterials.Add(i, 0);
+            RessourceGroups.Students.Add(i, 0);
+            RessourceGroups.Workers.Add(i, 0);
+            RessourceGroups.Professors.Add(i, 0);
+        }
 
         CountdownUpdateUI.Raise();
         CityPropertiesUpdated.Raise();

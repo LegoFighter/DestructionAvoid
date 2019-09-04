@@ -1087,13 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5007ec54381abafd3b29d09ccfab7732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
-    type: 2}
-  UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
-  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
-  RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
-  AmountOfCitizen: 2000
-  birthRate: 2
 --- !u!114 &4038307530010160288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1103,20 @@ MonoBehaviour:
   RessourceGroupId: 0
   Type: 3
   Cost: 0
+  GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
+  RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
+  CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
+    type: 2}
+  UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
+  LocalRessources: 
+  AmountRessourcesMax: 000000000000000000000000000000000000000000000000
+  RunningCosts: 000000000000000000000000000000000000000000000000
+  WearPerHour: []
+  MaximalHarvestRates: 000000000000000000000000000000000000000000000000
+  MaterialCost: 
+  ProductionOutput: 
+  MaximalProductionCount: 0
+  TileEfficiency: 0
 --- !u!114 &5136244065561610476
 MonoBehaviour:
   m_ObjectHideFlags: 0

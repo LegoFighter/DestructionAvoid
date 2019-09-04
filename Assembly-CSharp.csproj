@@ -62,7 +62,6 @@
      <Compile Include="Assets\Scripts\Camera\TransformExtensions.cs" />
      <Compile Include="Assets\Scripts\CanvasController.cs" />
      <Compile Include="Assets\Scripts\MainMenuScript.cs" />
-     <Compile Include="Assets\Scripts\RessourceHandler.cs" />
      <Compile Include="Assets\Scripts\Rocket.cs" />
      <Compile Include="Assets\Scripts\RotationScript.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\AsteroidData.cs" />
