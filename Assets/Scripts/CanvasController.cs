@@ -79,6 +79,10 @@ public class CanvasController : MonoBehaviour
         TileUI.SetActive(true);
     }
 
+    public void QuitGame() {
+         Application.Quit();
+    }
+
     public void OnTileDetailUpdate()
     {
         Tile tile = GameProperties.SelectedTile;

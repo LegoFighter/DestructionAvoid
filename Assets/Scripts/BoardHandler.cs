@@ -22,9 +22,11 @@ public class BoardHandler : MonoBehaviour
     public GameEvent ShowLaunchUI;
     public GameEvent HideLaunchUI;
 
+    public GameEvent HelpUIHide;
     public GameEvent TileBuild;
     public GameEvent TileSold;
     public GameEvent TileDetailsShow;
+        public GameEvent TileDetailsHide;
     public GameEvent TileDetailsUpdate;
     public GameEvent NotEnoughMoney;
 
@@ -244,7 +246,6 @@ public class BoardHandler : MonoBehaviour
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
                     GameProperties.SelectedTile = clickedTile;
-                    clickedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
 
                     SwitchLaunchUI(clickedTile);
@@ -275,6 +276,8 @@ public class BoardHandler : MonoBehaviour
     {
         HideGroupUI.Raise();
         HideLaunchUI.Raise();
+        HelpUIHide.Raise();
+        TileDetailsHide.Raise();
     }
 
     public void EnableBuilder(int index)
