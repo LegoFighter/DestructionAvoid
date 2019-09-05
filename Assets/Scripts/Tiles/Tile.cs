@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour
     public float TileEfficiency;
 
 
-    public void OnMinuteTick()
+    public void Outputting()
     {
         ProducesOutput();
         TileInfoUpdate.Raise();
@@ -51,7 +51,7 @@ public class Tile : MonoBehaviour
         UpdateGroups.Raise();
     }
 
-    public void OnHourTick()
+    public void Harvesting()
     {
         HarvestRessourcesPerHour();
         CalculateCostsPerHour();

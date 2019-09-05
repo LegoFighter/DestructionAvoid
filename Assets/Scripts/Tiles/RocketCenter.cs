@@ -9,9 +9,11 @@ public class RocketCenter : MonoBehaviour
     public GameProperties GameProperties;
 
     public AsteroidData AsteroidData;
-    public bool RocketIsLaunchable = true;
 
     public GameEvent RocketLaunched;
+    public GameEvent NotEnoughMoney;
+
+    public int RocketCosts;
 
     public int RocketDamage;
 
@@ -31,25 +33,34 @@ public class RocketCenter : MonoBehaviour
 
     public void LaunchRockets()
     {
-        CalculateSuccessPropability();
-        if (RocketIsLaunchable && AsteroidData.Asteroid != null)
+        if (GameProperties.Cash >= RocketCosts)
         {
-            Rocket Rocket = Instantiate(RocketPrefab, RocketSpawnPoint.transform.position, RocketSpawnPoint.transform.rotation, gameObject.transform);
+            CalculateSuccessPropability();
+            if (AsteroidData.Asteroid != null)
+            {
+                Rocket Rocket = Instantiate(RocketPrefab, RocketSpawnPoint.transform.position, RocketSpawnPoint.transform.rotation, gameObject.transform);
 
-            int calculatedRocketDamage = (int)(RocketDamage * SuccessPropabiltiy);
-            int calculatedRocketSpeed = (int)(RocketDamage * SuccessPropabiltiy);
-            int calculatedRocketSelfDestruct = (int)(RocketDamage * SuccessPropabiltiy);
-            Rocket.Target = AsteroidData.Asteroid;
-            Rocket.Damage = UnityEngine.Random.Range(calculatedRocketDamage, RocketDamage);
-            Rocket.Speed = UnityEngine.Random.Range(calculatedRocketSpeed, RocketDamage);
-            Rocket.SelfDestructDelay = UnityEngine.Random.Range(calculatedRocketSelfDestruct, SelfDestructDelay);
-            RocketLaunched.Raise();
+                int calculatedRocketDamage = (int)(RocketDamage * SuccessPropabiltiy);
+                int calculatedRocketSpeed = (int)(RocketDamage * SuccessPropabiltiy);
+                int calculatedRocketSelfDestruct = (int)(RocketDamage * SuccessPropabiltiy);
+                Rocket.Target = AsteroidData.Asteroid;
+                Rocket.Damage = UnityEngine.Random.Range(calculatedRocketDamage, RocketDamage);
+                Rocket.Speed = UnityEngine.Random.Range(calculatedRocketSpeed, RocketDamage);
+                Rocket.SelfDestructDelay = UnityEngine.Random.Range(calculatedRocketSelfDestruct, SelfDestructDelay);
+                RocketLaunched.Raise();
+            }
         }
+        else
+        {
+            NotEnoughMoney.Raise();
+        }
+
+
     }
 
     private void CalculateSuccessPropability()
     {
-        SuccessPropabiltiy = (baseTile.LocalRessources[4]/baseTile.AmountRessourcesMax[4]) - ((baseTile.LocalRessources[4]/baseTile.AmountRessourcesMax[4])/5); 
+        SuccessPropabiltiy = (baseTile.LocalRessources[4] / baseTile.AmountRessourcesMax[4]) - ((baseTile.LocalRessources[4] / baseTile.AmountRessourcesMax[4]) / 5);
     }
 
 }

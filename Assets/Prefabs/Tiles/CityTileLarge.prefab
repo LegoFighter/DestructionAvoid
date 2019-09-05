@@ -1137,12 +1137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: c341c3d17a77a7f9fa497866d2410fa6, type: 2}
+  GameEvent: {fileID: 11400000, guid: 6293910e9d885e4ae900d6975153fa61, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4038307530010160288}
-        m_MethodName: OnHourTick
+        m_MethodName: Harvesting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1171,7 +1171,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4038307530010160288}
-        m_MethodName: OnMinuteTick
+        m_MethodName: Outputting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

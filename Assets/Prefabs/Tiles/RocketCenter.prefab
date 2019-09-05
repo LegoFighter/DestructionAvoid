@@ -5297,8 +5297,9 @@ MonoBehaviour:
   RocketSpawnPoint: {fileID: 8578673787301085073}
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   AsteroidData: {fileID: 11400000, guid: 4d2231e1d0d1582fca720481598b9886, type: 2}
-  RocketIsLaunchable: 1
   RocketLaunched: {fileID: 11400000, guid: 681ffe72cfd861fbbad3d52ebea23011, type: 2}
+  NotEnoughMoney: {fileID: 11400000, guid: 5939ab0938953dcf580c83e83b579306, type: 2}
+  RocketCosts: 25000
   RocketDamage: 50
   RocketSpeed: 20
   SelfDestructDelay: 15
@@ -5353,12 +5354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: c341c3d17a77a7f9fa497866d2410fa6, type: 2}
+  GameEvent: {fileID: 11400000, guid: 6293910e9d885e4ae900d6975153fa61, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -3997177993324191181}
-        m_MethodName: OnHourTick
+        m_MethodName: Harvesting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5387,7 +5388,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -3997177993324191181}
-        m_MethodName: OnHourTick
+        m_MethodName: Outputting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
