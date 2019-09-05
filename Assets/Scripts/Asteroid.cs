@@ -42,7 +42,7 @@ public class Asteroid : MonoBehaviour
 
             if (HP <= 0)
             {
-                Destroy(gameObject);
+                OnDestroy();
             }
         }
     }
@@ -53,7 +53,8 @@ public class Asteroid : MonoBehaviour
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         PlayExplosion();
-        AsteroidDestroyd.Raise();       
+        AsteroidDestroyd.Raise();    
+        Destroy(gameObject);   
     }
 
 

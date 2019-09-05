@@ -24,7 +24,9 @@ public class BoardHandler : MonoBehaviour
 
     public GameEvent TileBuild;
     public GameEvent TileSold;
-    public GameEvent ShowTileDetails;
+    public GameEvent TileDetailsShow;
+    public GameEvent TileDetailsUpdate;
+    public GameEvent NotEnoughMoney;
 
     void Update()
     {
@@ -174,6 +176,8 @@ public class BoardHandler : MonoBehaviour
                         UpdateGroupUI.Raise();
                         TileBuild.Raise();
                         SwitchLaunchUI(selectedTile);
+                    } else {
+                        NotEnoughMoney.Raise();
                     }
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
@@ -239,15 +243,16 @@ public class BoardHandler : MonoBehaviour
                 }
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
-
                     GameProperties.SelectedTile = clickedTile;
-                    ShowTileDetails.Raise();
-                    
-                    SwitchLaunchUI(clickedTile);
                     clickedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                     GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+
+                    SwitchLaunchUI(clickedTile);
+
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
+                    TileDetailsUpdate.Raise();
+                    TileDetailsShow.Raise();
                 }
             }
         }

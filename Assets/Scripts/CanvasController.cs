@@ -12,10 +12,7 @@ public class CanvasController : MonoBehaviour
 
     [Header("Groups")]
     public GameObject GroupUI;
-    public TextMeshProUGUI GroupName;
-    public TextMeshProUGUI UnemployedCitizen;
-    public TextMeshProUGUI RawMaterial;
-    public TextMeshProUGUI ProcessedMaterial;
+    public TextMeshProUGUI[] FieldsGroup;
 
 
     [Header("City Properties")]
@@ -23,7 +20,6 @@ public class CanvasController : MonoBehaviour
     public GameObject CityPropertiesUI;
     public TextMeshProUGUI Cash;
     public TextMeshProUGUI Population;
-    public TextMeshProUGUI StageOfRocketCompletion;
     public TextMeshProUGUI AmountOfStructures;
 
     [Header("Launch")]
@@ -51,7 +47,27 @@ public class CanvasController : MonoBehaviour
 
     [Header("Tile Details")]
     public GameObject TileUI;
+    public TextMeshProUGUI[] GeneralInfo;
+    public TextMeshProUGUI[] Field0;
+    public TextMeshProUGUI[] Field1;
+    public TextMeshProUGUI[] Field2;
+    public TextMeshProUGUI[] Field3;
+    public TextMeshProUGUI[] Field4;
+    public TextMeshProUGUI[] Field5;
+    public TextMeshProUGUI[] Field6;
 
+    [Header("Help")]
+    public GameObject HelpUI;
+
+    public void HideHelpUI()
+    {
+        HelpUI.SetActive(false);
+    }
+
+    public void ShowHelpUI()
+    {
+        HelpUI.SetActive(true);
+    }
 
     public void HideTileUI()
     {
@@ -61,6 +77,48 @@ public class CanvasController : MonoBehaviour
     public void ShowTileUI()
     {
         TileUI.SetActive(true);
+    }
+
+    public void OnTileDetailUpdate()
+    {
+        Tile tile = GameProperties.SelectedTile;
+
+        if (tile != null)
+        {
+            GeneralInfo[0].text = tile.RessourceGroupId.ToString();
+            GeneralInfo[1].text = tile.Cost + " $";
+            GeneralInfo[2].text = tile.MaximalProductionCount.ToString();
+            GeneralInfo[3].text = (int)(tile.TileEfficiency * 100) + " %";
+
+            for (int i = 0; i < tile.LocalRessources.Length; i++)
+            {
+                Field0[i].text = tile.LocalRessources[i].ToString();
+            }
+            for (int i = 0; i < tile.AmountRessourcesMax.Length; i++)
+            {
+                Field1[i].text = tile.AmountRessourcesMax[i].ToString();
+            }
+            for (int i = 0; i < tile.RunningCosts.Length; i++)
+            {
+                Field2[i].text = tile.RunningCosts[i] + " $";
+            }
+            for (int i = 0; i < tile.WearPerHour.Length; i++)
+            {
+                Field3[i].text = tile.WearPerHour[i].ToString();
+            }
+            for (int i = 0; i < tile.MaximalHarvestRates.Length; i++)
+            {
+                Field4[i].text = tile.MaximalHarvestRates[i].ToString();
+            }
+            for (int i = 0; i < tile.MaterialCost.Length; i++)
+            {
+                Field5[i].text = tile.MaterialCost[i].ToString();
+            }
+            for (int i = 0; i < tile.ProductionOutput.Length; i++)
+            {
+                Field6[i].text = tile.ProductionOutput[i].ToString();
+            }
+        }
     }
 
     public void ShowNewInfoMessage(string infoText)
@@ -87,6 +145,7 @@ public class CanvasController : MonoBehaviour
         GroupUI.SetActive(false);
         LaunchUI.SetActive(false);
         HideTileUI();
+        HideHelpUI();
     }
 
     IEnumerator HideInfoBox()
@@ -111,6 +170,7 @@ public class CanvasController : MonoBehaviour
         WonUI.SetActive(false);
         InformationUI.SetActive(false);
         HideTileUI();
+        HideHelpUI();
         ClearInformationBox();
     }
 
@@ -175,7 +235,6 @@ public class CanvasController : MonoBehaviour
     {
         Cash.text = GameProperties.Cash + "$";
         Population.text = GameProperties.Population.ToString();
-        StageOfRocketCompletion.text = GameProperties.StageOfRocketCompletion + " %";
         AmountOfStructures.text = GameProperties.AmountOfTiles + " tiles";
     }
 
@@ -205,11 +264,14 @@ public class CanvasController : MonoBehaviour
 
     public void UpdateGroupUI()
     {
-        GroupName.text = "Ressource Group " + GameProperties.ActiveRessourceGroup;
-        UnemployedCitizen.text = RessourceGroups.UnemployedCitizen[GameProperties.ActiveRessourceGroup].ToString();
-        RawMaterial.text = RessourceGroups.RawMaterials[GameProperties.ActiveRessourceGroup].ToString();
-        ProcessedMaterial.text = RessourceGroups.ProcessedMaterials[GameProperties.ActiveRessourceGroup].ToString();
 
+        FieldsGroup[0].text = RessourceGroups.RawMaterials[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[1].text = RessourceGroups.ProcessedMaterials[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[2].text = RessourceGroups.UnemployedCitizen[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[3].text = RessourceGroups.Students[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[4].text = RessourceGroups.Professors[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[5].text = RessourceGroups.Workers[GameProperties.ActiveRessourceGroup].ToString();
+        FieldsGroup[6].text = "Ressource Group " + GameProperties.ActiveRessourceGroup;
     }
 
     public void HideGroupUI()

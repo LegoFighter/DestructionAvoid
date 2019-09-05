@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bda0d780760b54e148c62f6278ec5076, type: 3}
-  m_Name: ShowTileDetails
+  m_Name: TileInfoUpdate
   m_EditorClassIdentifier: 

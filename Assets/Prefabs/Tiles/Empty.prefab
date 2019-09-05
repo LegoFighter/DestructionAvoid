@@ -442,12 +442,26 @@ MonoBehaviour:
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
     type: 2}
   UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
-  LocalRessources: 
+  TileInfoUpdate: {fileID: 11400000, guid: 2e3ad1353f2ece33a9dd1bbf652e9dca, type: 2}
+  ressourceOrder:
+  - Raw Materials
+  - Processed Materials
+  - Unemployed Citizien
+  - Students
+  - Professors
+  - Workers
+  LocalRessources: 000000000000000000000000000000000000000000000000
   AmountRessourcesMax: 000000000000000000000000000000000000000000000000
   RunningCosts: 000000000000000000000000000000000000000000000000
-  WearPerHour: []
+  WearPerHour:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   MaximalHarvestRates: 000000000000000000000000000000000000000000000000
-  MaterialCost: 
-  ProductionOutput: 
+  MaterialCost: 000000000000000000000000000000000000000000000000
+  ProductionOutput: 000000000000000000000000000000000000000000000000
   MaximalProductionCount: 0
   TileEfficiency: 0

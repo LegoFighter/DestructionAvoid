@@ -24,10 +24,9 @@ public class GameManager : MonoBehaviour
     {
         runningState = true;
 
-        GameProperties.Cash = 0;
+        GameProperties.Cash = 1000000;
         GameProperties.AverageEducationLevel = 0;
         GameProperties.Population = 0;
-        GameProperties.StageOfRocketCompletion = 0;
         GameProperties.AmountOfTiles = 0;
         GameProperties.CountdownHoursLeft = 24;
         GameProperties.CountdownMinutesLeft = 0;
@@ -91,6 +90,10 @@ public class GameManager : MonoBehaviour
             }
             CountdownUpdateUI.Raise();
         }
+    }
+
+    public void OnGameOverEvent() {
+        runningState = false;
     }
 
 

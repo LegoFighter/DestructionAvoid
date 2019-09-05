@@ -4880,6 +4880,8 @@ GameObject:
   - component: {fileID: 594207965395986325}
   - component: {fileID: -3997177993324191181}
   - component: {fileID: 2489333967657305063}
+  - component: {fileID: -3740399182149002500}
+  - component: {fileID: -1964871166948724883}
   m_Layer: 0
   m_Name: RocketCenter
   m_TagString: Rocket
@@ -5297,6 +5299,10 @@ MonoBehaviour:
   AsteroidData: {fileID: 11400000, guid: 4d2231e1d0d1582fca720481598b9886, type: 2}
   RocketIsLaunchable: 1
   RocketLaunched: {fileID: 11400000, guid: 681ffe72cfd861fbbad3d52ebea23011, type: 2}
+  RocketDamage: 50
+  RocketSpeed: 20
+  SelfDestructDelay: 15
+  SuccessPropabiltiy: 0.7
 --- !u!114 &-3997177993324191181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,22 +5318,88 @@ MonoBehaviour:
   Id: 0
   RessourceGroupId: 0
   Type: 7
-  Cost: 0
+  Cost: 70000
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
     type: 2}
   UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
-  LocalRessources: 
-  AmountRessourcesMax: 000000000000000000000000000000000000000000000000
-  RunningCosts: 000000000000000000000000000000000000000000000000
-  WearPerHour: []
-  MaximalHarvestRates: 000000000000000000000000000000000000000000000000
-  MaterialCost: 
-  ProductionOutput: 
-  MaximalProductionCount: 0
+  TileInfoUpdate: {fileID: 11400000, guid: 2e3ad1353f2ece33a9dd1bbf652e9dca, type: 2}
+  ressourceOrder:
+  - Raw Materials
+  - Processed Materials
+  - Unemployed Citizien
+  - Students
+  - Professors
+  - Workers
+  LocalRessources: 000000000000000000000000000000000000000000000000
+  AmountRessourcesMax: c8000000c80000000000000064000000c800000014000000
+  RunningCosts: 000000000000000000000000c8000000ee02000064000000
+  WearPerHour: 0c0000001200000000000000080000000400000001000000
+  MaximalHarvestRates: 0000000000000000000000000a0000000500000002000000
+  MaterialCost: 000000000000000000000000010000000000000000000000
+  ProductionOutput: 000000000000000000000000000000000100000000000000
+  MaximalProductionCount: 1
   TileEfficiency: 0
 --- !u!114 &2489333967657305063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175743792900349947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: c341c3d17a77a7f9fa497866d2410fa6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3997177993324191181}
+        m_MethodName: OnHourTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &-3740399182149002500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175743792900349947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: ad58690fda1cf2fe28462c1d803aaab4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3997177993324191181}
+        m_MethodName: OnHourTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &-1964871166948724883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

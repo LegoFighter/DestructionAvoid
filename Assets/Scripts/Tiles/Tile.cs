@@ -17,35 +17,54 @@ public class Tile : MonoBehaviour
     [Header("Game Events")]
     public GameEvent CityPropertiesUpdated;
     public GameEvent UpdateGroups;
+    public GameEvent TileInfoUpdate;
 
-    [Header("Local Amount of Ressources")]
+    [Header("Ressource Order")]
+    [SerializeField]
+    private string[] ressourceOrder = new string[] { "Raw Materials", "Processed Materials", "Unemployed Citizien", "Students", "Professors", "Workers" };
+
+    [Header("Ressource Options")]
     public int[] LocalRessources;
 
-    [Header("Max Amount of Ressources")]
     public int[] AmountRessourcesMax;
 
-    [Header("Running Costs Per Hour")]
     public int[] RunningCosts;
 
-    [Header("Wear Per Hour")]
-    public float[] WearPerHour;
+    public int[] WearPerHour;
 
-    [Header("Maximal Harvest Rates")]
     public int[] MaximalHarvestRates;
 
-    [Header("Material Cost Per Unit")]
     public int[] MaterialCost;
 
-    [Header("Production Output")]
     public int[] ProductionOutput;
 
-    [Header("Maximal Production Count")]
     public int MaximalProductionCount;
 
-    [Header("Efficiency")]
     public float TileEfficiency;
 
 
+    public void OnMinuteTick()
+    {
+        ProducesOutput();
+        TileInfoUpdate.Raise();
+        CityPropertiesUpdated.Raise();
+        UpdateGroups.Raise();
+    }
+
+    public void OnHourTick()
+    {
+        HarvestRessourcesPerHour();
+        CalculateCostsPerHour();
+        ApplyWearPerHour();
+        TileInfoUpdate.Raise();
+        CityPropertiesUpdated.Raise();
+        UpdateGroups.Raise();
+    }
+
+    public void OnQuarterTick()
+    {
+        TileInfoUpdate.Raise();
+    }
     private void ProducesOutput()
     {
         int productionCycleCounter = 0;
@@ -55,9 +74,12 @@ public class Tile : MonoBehaviour
             {
                 LocalRessources[i] -= MaterialCost[i];
             }
-            RessourceGroups.UnemployedCitizen[RessourceGroupId] += ProductionOutput[0];
-            RessourceGroups.RawMaterials[RessourceGroupId] += ProductionOutput[1];
-            RessourceGroups.ProcessedMaterials[RessourceGroupId] += ProductionOutput[2];
+            RessourceGroups.RawMaterials[RessourceGroupId] += ProductionOutput[0];
+            RessourceGroups.ProcessedMaterials[RessourceGroupId] += ProductionOutput[1];
+            RessourceGroups.UnemployedCitizen[RessourceGroupId] += ProductionOutput[2];
+
+            GameProperties.Population += ProductionOutput[2];
+
             RessourceGroups.Students[RessourceGroupId] += ProductionOutput[3];
             RessourceGroups.Professors[RessourceGroupId] += ProductionOutput[4];
             RessourceGroups.Workers[RessourceGroupId] += ProductionOutput[5];
@@ -93,18 +115,33 @@ public class Tile : MonoBehaviour
     {
         for (int i = 0; i < LocalRessources.Length; i++)
         {
-            if (LocalRessources[i] != 0)
+            if (LocalRessources[i] <= 0)
             {
-                LocalRessources[i] -= (int)((float)LocalRessources[i] * WearPerHour[i]);
+                LocalRessources[i] -= WearPerHour[i];
+                if (i > 1)
+                {
+                    GameProperties.Population -= WearPerHour[i];
+
+                    if (GameProperties.Population < 0)
+                    {
+                        GameProperties.Population = 0;
+                    }
+                }
+
+                if (LocalRessources[i] <= 0)
+                    LocalRessources[i] = 0;
+
             }
         }
     }
 
+
     private void HarvestRessourcesPerHour()
     {
-        HarvestRessource(RessourceGroups.UnemployedCitizen, 0);
-        HarvestRessource(RessourceGroups.RawMaterials, 1);
-        HarvestRessource(RessourceGroups.ProcessedMaterials, 2);
+
+        HarvestRessource(RessourceGroups.RawMaterials, 0);
+        HarvestRessource(RessourceGroups.ProcessedMaterials, 1);
+        HarvestRessource(RessourceGroups.UnemployedCitizen, 2);
         HarvestRessource(RessourceGroups.Students, 3);
         HarvestRessource(RessourceGroups.Professors, 4);
         HarvestRessource(RessourceGroups.Workers, 5);
@@ -112,18 +149,24 @@ public class Tile : MonoBehaviour
 
     private void HarvestRessource(Dictionary<int, int> ressourceDictionary, int ressourceIndex)
     {
-        int checkUnemp = ressourceDictionary[RessourceGroupId] - MaximalHarvestRates[ressourceIndex];
-        int diff = 0;
-        if (checkUnemp < 0)
+        if (ressourceDictionary[RessourceGroupId] > 0)
         {
-            diff = (MaximalHarvestRates[0] - checkUnemp);
-            RessourceGroups.UnemployedCitizen[RessourceGroupId] -= diff;
-            LocalRessources[ressourceIndex] += diff;
-        }
-        else
-        {
-            RessourceGroups.UnemployedCitizen[RessourceGroupId] -= MaximalHarvestRates[ressourceIndex];
-            LocalRessources[ressourceIndex] += MaximalHarvestRates[ressourceIndex];
+            int ressourceCheck = ressourceDictionary[RessourceGroupId] - MaximalHarvestRates[ressourceIndex];
+
+            if (ressourceCheck <= 0)
+            {
+                int diff = Mathf.Abs(ressourceCheck);
+                ressourceDictionary[RessourceGroupId] -= diff;
+                LocalRessources[ressourceIndex] += diff;
+            }
+            else
+            {
+                ressourceDictionary[RessourceGroupId] -= MaximalHarvestRates[ressourceIndex];
+                LocalRessources[ressourceIndex] += MaximalHarvestRates[ressourceIndex];
+            }
+
+            if (ressourceDictionary[RessourceGroupId] < 0)
+                ressourceDictionary[RessourceGroupId] = 0;
         }
     }
 }

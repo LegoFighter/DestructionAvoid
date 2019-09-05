@@ -21,6 +21,13 @@ public class Timer : MonoBehaviour
         StartCoroutine(MinuteTick());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnHour.Raise();
+        }
+    }
     IEnumerator MinuteTick()
     {
         while (clockActive)

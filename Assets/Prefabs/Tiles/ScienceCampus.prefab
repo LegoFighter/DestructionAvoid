@@ -1509,6 +1509,8 @@ GameObject:
   - component: {fileID: 1239847608517957789}
   - component: {fileID: -360735340917389636}
   - component: {fileID: -435155066074315689}
+  - component: {fileID: 4157731694014777680}
+  - component: {fileID: 4824769820220172201}
   m_Layer: 0
   m_Name: ScienceCampus
   m_TagString: Untagged
@@ -1930,21 +1932,87 @@ MonoBehaviour:
   Id: 0
   RessourceGroupId: 0
   Type: 8
-  Cost: 0
+  Cost: 25000
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
     type: 2}
   UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
-  LocalRessources: 
-  AmountRessourcesMax: 000000000000000000000000000000000000000000000000
-  RunningCosts: 000000000000000000000000000000000000000000000000
-  WearPerHour: []
-  MaximalHarvestRates: 000000000000000000000000000000000000000000000000
-  MaterialCost: 
-  ProductionOutput: 
-  MaximalProductionCount: 0
+  TileInfoUpdate: {fileID: 11400000, guid: 2e3ad1353f2ece33a9dd1bbf652e9dca, type: 2}
+  ressourceOrder:
+  - Raw Materials
+  - Processed Materials
+  - Unemployed Citizien
+  - Students
+  - Professors
+  - Workers
+  LocalRessources: 000000000000000000000000000000000500000000000000
+  AmountRessourcesMax: 000000000000000032000000c80000001400000005000000
+  RunningCosts: 00000000000000000000000014000000f40100002c010000
+  WearPerHour: 000000000000000000000000020000000000000001000000
+  MaximalHarvestRates: 000000000000000032000000320000000300000002000000
+  MaterialCost: 000000000000000032000000000000000000000000000000
+  ProductionOutput: 000000000000000000000000320000001900000000000000
+  MaximalProductionCount: 1
   TileEfficiency: 0
+--- !u!114 &4157731694014777680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239847608517957788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: c341c3d17a77a7f9fa497866d2410fa6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -435155066074315689}
+        m_MethodName: OnHourTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4824769820220172201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239847608517957788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: ad58690fda1cf2fe28462c1d803aaab4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -435155066074315689}
+        m_MethodName: OnMinuteTick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1239847608524049572
 GameObject:
   m_ObjectHideFlags: 0
