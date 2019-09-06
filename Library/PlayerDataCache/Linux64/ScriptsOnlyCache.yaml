@@ -9,6 +9,8 @@ ScriptsOnlyBuild:
     - CanvasController
     - DoubleClickDetectorC
     - Empty
+    - EventAudio
+    - ExplosionMat
     - Factory
     - GameEvent
     - GameEventListener
@@ -43,7 +45,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
@@ -114,6 +115,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10022}
     - Class: 114
       Script: {instanceID: 10066}
+    - Class: 114
+      Script: {instanceID: 10230}
     - Class: 114
       Script: {instanceID: 10418}
     - Class: 114
@@ -188,6 +191,10 @@ ScriptsOnlyBuild:
     - Class: 75
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 84
       Script: {instanceID: 0}
@@ -277,9 +284,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12194}
     - Class: 114
       Script: {instanceID: 12286}
+    - Class: 114
+      Script: {instanceID: 1001310}
+    - Class: 114
+      Script: {instanceID: 1054114}
+    - Class: 114
+      Script: {instanceID: 1098376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -294,6 +309,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -334,7 +355,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: f9e722e00c72d6a0d2b3efc8f07ee8fb
+      Hash: 5dc7c0509169ab1bb7f12abcd466a8a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tile
@@ -352,7 +373,7 @@ ScriptsOnlyBuild:
     className: GameEvent
   - hash:
       serializedVersion: 2
-      Hash: 869da5e7e640dadb34b530e9b57ee58d
+      Hash: 7987c611531f17b913f157dd6f8d250f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameProperties
@@ -472,7 +493,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 4e7f3be2d8cf0039183129a10f991b5d
+      Hash: 2fd0ffa5ba5405618fd2953c809a3d3b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Board
@@ -874,7 +895,7 @@ ScriptsOnlyBuild:
     className: SimpleScript
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: c2945101ada07b10fa29f71f9c325c5e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NuclearTestArea
@@ -1054,7 +1075,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 508f8d98302d2ed6362d2100ca3820ee
+      Hash: fe813b40f0e732a2510f2a6e08d518a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CanvasController
@@ -1130,8 +1151,20 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: ef6f91025692b74a5a20d7006b2c2193
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ExplosionMat
+  - hash:
+      serializedVersion: 2
+      Hash: 8ac00b393ed60d330a51b3da5255f2c4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EventAudio
   platform: 24
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Map.unity
-  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v2.x86_64
+  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v3.x86_64

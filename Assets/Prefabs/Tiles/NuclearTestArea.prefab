@@ -48,8 +48,10 @@ GameObject:
   - component: {fileID: 6004654170312511036}
   - component: {fileID: -170485112861032411}
   - component: {fileID: -9206518462663186124}
+  - component: {fileID: 5529201317000242160}
   - component: {fileID: 1473854229302045917}
   - component: {fileID: 8774089111995668341}
+  - component: {fileID: 7542433786665787933}
   m_Layer: 0
   m_Name: NuclearTestArea
   m_TagString: NuclearTestArea
@@ -74,6 +76,7 @@ Transform:
   - {fileID: 3557890672738766526}
   - {fileID: 3557890672711224368}
   - {fileID: 4015693364522566730}
+  - {fileID: 5482328276715429713}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -466,9 +469,8 @@ MonoBehaviour:
   BombTestFailed: {fileID: 11400000, guid: 4ca7a9e755a5c86459f2e0e130e69215, type: 2}
   BombTestSuccesful: {fileID: 11400000, guid: 9eadcb885a3badaeb97f26a89d5ac8d5, type: 2}
   HideTileInfo: {fileID: 11400000, guid: 56bf6e45f34b473c2bcdebc254b75361, type: 2}
+  PlayNuclearSound: {fileID: 11400000, guid: 68b80b1394b0f36acb4c7c33da089f5b, type: 2}
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
-  Explosion: {fileID: 0}
-  ExplosionPoint: {fileID: 3046783095792184501}
 --- !u!114 &6004654170312511036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,17 +539,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2838075122981788894}
-        m_MethodName: TestBomb
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &-9206518462663186124
@@ -568,6 +559,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6004654170312511036}
         m_MethodName: Outputting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &5529201317000242160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557890671329364517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d02dd9cf16f16fe8368decb1b1136c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: c341c3d17a77a7f9fa497866d2410fa6, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2838075122981788894}
+        m_MethodName: TestBomb
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -608,6 +628,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 40
   m_Center: {x: 5, y: 0.5, z: -10}
+--- !u!95 &7542433786665787933
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557890671329364517}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b3f117a1ec8d63438f1820f4faf9f2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3557890671584851537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,3 +2694,90 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!1001 &5482328276715554257
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3557890671329364515}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_Name
+      value: Pyroclastic Puff
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+      propertyPath: _scattering
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9473bf090aaa04164967cdceab413088, type: 3}
+--- !u!4 &5482328276715429713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 9473bf090aaa04164967cdceab413088,
+    type: 3}
+  m_PrefabInstance: {fileID: 5482328276715554257}
+  m_PrefabAsset: {fileID: 0}

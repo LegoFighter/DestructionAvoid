@@ -11,18 +11,20 @@ public class NuclearTestArea : MonoBehaviour
     public GameEvent BombTestFailed;
     public GameEvent BombTestSuccesful;
     public GameEvent HideTileInfo;
+    public GameEvent PlayNuclearSound;
 
     private Tile baseTile;
     public GameProperties GameProperties;
     private HashSet<GameObject> GameObjectsInRange;
 
-    public ParticleSystem Explosion;
-    public GameObject ExplosionPoint;
+    private Animator animator;
+
 
     void Start()
     {
         baseTile = GetComponent<Tile>();
         GameObjectsInRange = new HashSet<GameObject>();
+        animator = GetComponent<Animator>();
     }
 
     public void TestBomb()
@@ -44,19 +46,16 @@ public class NuclearTestArea : MonoBehaviour
 
     public void Explode()
     {
-        GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
-        BombTestFailed.Raise();
-        HideTileInfo.Raise();
-
-        Instantiate(Explosion, ExplosionPoint.transform.position, Quaternion.identity, ExplosionPoint.transform);
-
+        animator.SetTrigger("Explosion");
+        PlayNuclearSound.Raise();
         StartCoroutine(DeleteSelf());
     }
 
 
     IEnumerator DeleteSelf()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(2);
+        GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
         GameProperties.TilesToDelete.Add(gameObject);
         BombTestFailed.Raise();
         HideTileInfo.Raise();

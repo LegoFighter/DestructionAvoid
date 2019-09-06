@@ -13,14 +13,15 @@ public class Rocket : MonoBehaviour
     private ParticleSystem ParticleSystem;
     private Collider[] Collider;
     public GameEvent RocketSelfDestruct;
-
-
+    private AudioSource AudioSource;
     void Start()
     {
         StartCoroutine(SelfDestruct());
         MeshRenderer = GetComponentsInChildren<MeshRenderer>();
         ParticleSystem = GetComponentInChildren<ParticleSystem>();
         Collider = GetComponentsInChildren<Collider>();
+        AudioSource = GetComponent<AudioSource>();
+        AudioSource.Play();
     }
 
     void LateUpdate()
