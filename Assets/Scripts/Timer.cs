@@ -27,6 +27,10 @@ public class Timer : MonoBehaviour
         {
             OnHour.Raise();
         }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            OnQuarter.Raise();
+        }
     }
     IEnumerator MinuteTick()
     {

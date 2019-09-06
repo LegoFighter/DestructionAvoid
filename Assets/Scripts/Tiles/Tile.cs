@@ -9,6 +9,9 @@ public class Tile : MonoBehaviour
     public int RessourceGroupId;
     public int Type;
     public int Cost;
+    public string TileName;
+
+    public bool InDangerZone;
 
     [Header("Shared Data")]
     public GameProperties GameProperties;
@@ -18,6 +21,7 @@ public class Tile : MonoBehaviour
     public GameEvent CityPropertiesUpdated;
     public GameEvent UpdateGroups;
     public GameEvent TileInfoUpdate;
+    public GameEvent BonusApplied;
 
     [Header("Ressource Order")]
     [SerializeField]
@@ -42,6 +46,10 @@ public class Tile : MonoBehaviour
 
     public float TileEfficiency;
 
+    void Start()
+    {
+        InDangerZone = false;
+    }
 
     public void Outputting()
     {
@@ -77,9 +85,6 @@ public class Tile : MonoBehaviour
             RessourceGroups.RawMaterials[RessourceGroupId] += ProductionOutput[0];
             RessourceGroups.ProcessedMaterials[RessourceGroupId] += ProductionOutput[1];
             RessourceGroups.UnemployedCitizen[RessourceGroupId] += ProductionOutput[2];
-
-            GameProperties.Population += ProductionOutput[2];
-
             RessourceGroups.Students[RessourceGroupId] += ProductionOutput[3];
             RessourceGroups.Professors[RessourceGroupId] += ProductionOutput[4];
             RessourceGroups.Workers[RessourceGroupId] += ProductionOutput[5];
@@ -118,15 +123,6 @@ public class Tile : MonoBehaviour
             if (LocalRessources[i] <= 0)
             {
                 LocalRessources[i] -= WearPerHour[i];
-                if (i > 1)
-                {
-                    GameProperties.Population -= WearPerHour[i];
-
-                    if (GameProperties.Population < 0)
-                    {
-                        GameProperties.Population = 0;
-                    }
-                }
 
                 if (LocalRessources[i] <= 0)
                     LocalRessources[i] = 0;

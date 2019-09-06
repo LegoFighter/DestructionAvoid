@@ -4882,9 +4882,11 @@ GameObject:
   - component: {fileID: 2489333967657305063}
   - component: {fileID: -3740399182149002500}
   - component: {fileID: -1964871166948724883}
+  - component: {fileID: -628122092216515304}
+  - component: {fileID: -3077079651245828421}
   m_Layer: 0
   m_Name: RocketCenter
-  m_TagString: Rocket
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5320,12 +5322,14 @@ MonoBehaviour:
   RessourceGroupId: 0
   Type: 7
   Cost: 70000
+  TileName: Rocket Center
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
     type: 2}
   UpdateGroups: {fileID: 11400000, guid: 88e236fd4fdffda08a53860dabcb11bd, type: 2}
   TileInfoUpdate: {fileID: 11400000, guid: 2e3ad1353f2ece33a9dd1bbf652e9dca, type: 2}
+  BonusApplied: {fileID: 11400000, guid: 67f6959298d06e26f816c14b32689226, type: 2}
   ressourceOrder:
   - Raw Materials
   - Processed Materials
@@ -5429,6 +5433,35 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!54 &-628122092216515304
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175743792900349947}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &-3077079651245828421
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175743792900349947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: 5.28, y: 0, z: -10.65}
 --- !u!1 &7247232545017354475
 GameObject:
   m_ObjectHideFlags: 0

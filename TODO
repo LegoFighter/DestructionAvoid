@@ -1,0 +1,64 @@
+1.) Raketen Animation im Hauptmenü [x]
+3.) Explosion des Test Centers. Gibt Erfolgswahrscheinlichkeitsteigerung einer Rakete [ ]
+5.) Sounds [ ]
+6.) Erläuterungen zu den Tiles [ ]
+7.) Optionale Erweiterung: [ ]
+	*	Umwandeln des Spiels in ein Daten-Orientiertes Spiel, um die Performance zu verbessern
+	*	Ausführlicheres Testen und Balancing
+	*	Nächster Punkt
+	*	A "Real" Map with trees and land
+
+Cities
+-----------------------------------------------------
+intput:
+	*	needs no input
+output: 
+	*	unemployed citizens.
+boni:
+	*	no special boni
+
+Factory
+-----------------------------------------------------
+intput:
+	*	needs no input
+output: 
+	*	unemployed citizens.
+boni:
+	*	no special boni
+
+Mineshaft
+-----------------------------------------------------
+intput:
+	*	needs no input
+output: 
+	*	unemployed citizens.
+boni:
+	*	no special boni
+
+Bomb Test Center
+-----------------------------------------------------
+intput:
+	*	Professors, a lot of students and some workers.
+output: 
+	*	Sometimes Professor. But has a alot of wear. Human wear.
+boni:
+	*	all surrounding (in a ~3 tiles diameter) get +20 Professor Output.
+
+Science Campus
+-----------------------------------------------------
+intput:
+	*	needs no input
+output: 
+	*	unemployed citizens.
+boni:
+	*	no special boni
+
+Rocket Center
+-----------------------------------------------------
+intput:
+	*	needs no input
+output: 
+	*	unemployed citizens.
+boni:
+	*	no special boni
+

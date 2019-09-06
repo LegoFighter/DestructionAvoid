@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Asteroid
   - Rocket
+  - Tile
+  - ScienceTile
+  - NuclearTestArea
   layers:
   - Default
   - TransparentFX

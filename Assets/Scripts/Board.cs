@@ -7,6 +7,7 @@ public class Board : MonoBehaviour
 
     public GameObject[] Tiles;
     public GameObject emptyTile;
+    public GameProperties GameProperties;
 
     public bool isBuildMode;
 
@@ -30,7 +31,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public Tile AddTile(GameObject tileToAdd, GameObject tileToReplace)
+    public void AddTile(GameObject tileToAdd, GameObject tileToReplace)
     {
         int indexToReplace = 0;
 
@@ -42,30 +43,40 @@ public class Board : MonoBehaviour
                 break;
             }
         }
-        Destroy(Tiles[indexToReplace].gameObject);
 
         GameObject tileInstance = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
         Tiles[indexToReplace] = tileInstance;
-
         Tile tileRef = tileInstance.GetComponent<Tile>();
 
         if (!isBuildMode && tileRef.Type == 0)
         {
             tileInstance.SetActive(false);
         }
-        return tileRef;
+
+        if (GameProperties.TilesToDelete.Contains(tileToReplace))
+        {
+            GameProperties.TilesToDelete.Remove(tileToReplace);
+        }
+
+        Destroy(tileToReplace);
     }
 
-    public Tile RemoveTile(GameObject tileAtPosition)
+    public void RemoveTile(GameObject tileAtPosition)
     {
-
         AddTile(emptyTile, tileAtPosition);
-        return tileAtPosition.GetComponent<Tile>();
     }
 
     public bool CheckIfTileEmpty(GameObject tileAtPosition)
     {
         return tileAtPosition.GetComponent<Tile>().Type == 0;
+    }
+
+    public void DeleteTilesToDelete()
+    {
+        for (int i = GameProperties.TilesToDelete.Count - 1; i >= 0; i--)
+        {
+            RemoveTile(GameProperties.TilesToDelete[i]);
+        }
     }
 
 }

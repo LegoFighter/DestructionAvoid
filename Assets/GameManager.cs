@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameEvent CountdownUpdateUI;
     public GameEvent CountdownOver;
     public GameEvent GameOver;
+    public GameEvent StartGame;
 
 
     [SerializeField]
@@ -27,10 +28,13 @@ public class GameManager : MonoBehaviour
         GameProperties.Cash = 1000000;
         GameProperties.AverageEducationLevel = 0;
         GameProperties.Population = 0;
-        GameProperties.AmountOfTiles = 0;
+        // GameProperties.AmountOfTiles = 0;
         GameProperties.CountdownHoursLeft = 24;
         GameProperties.CountdownMinutesLeft = 0;
         GameProperties.ActiveRessourceGroup = 0;
+        GameProperties.TilesToDelete = new List<GameObject>();
+
+        GameProperties.TilesToDelete.Clear();
 
         AsteroidData.Asteroid = Asteroid;
         AsteroidData.AsteroidSpeed = 50000;
@@ -72,6 +76,11 @@ public class GameManager : MonoBehaviour
     {
         if (runningState)
         {
+            if (GameProperties.CountdownHoursLeft == 23 && GameProperties.CountdownMinutesLeft == 59)
+            {
+                StartGame.Raise();
+            }
+
             if (GameProperties.CountdownMinutesLeft == 0)
             {
                 GameProperties.CountdownHoursLeft--;
@@ -92,7 +101,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnGameOverEvent() {
+    public void OnGameOverEvent()
+    {
         runningState = false;
     }
 

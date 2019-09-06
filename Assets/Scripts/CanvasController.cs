@@ -19,8 +19,8 @@ public class CanvasController : MonoBehaviour
 
     public GameObject CityPropertiesUI;
     public TextMeshProUGUI Cash;
-    public TextMeshProUGUI Population;
-    public TextMeshProUGUI AmountOfStructures;
+    // public TextMeshProUGUI Population;
+    // public TextMeshProUGUI AmountOfStructures;
 
     [Header("Launch")]
     public GameObject LaunchUI;
@@ -79,8 +79,9 @@ public class CanvasController : MonoBehaviour
         TileUI.SetActive(true);
     }
 
-    public void QuitGame() {
-         Application.Quit();
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void OnTileDetailUpdate()
@@ -89,10 +90,11 @@ public class CanvasController : MonoBehaviour
 
         if (tile != null)
         {
-            GeneralInfo[0].text = tile.RessourceGroupId.ToString();
-            GeneralInfo[1].text = tile.Cost + " $";
-            GeneralInfo[2].text = tile.MaximalProductionCount.ToString();
-            GeneralInfo[3].text = (int)(tile.TileEfficiency * 100) + " %";
+            GeneralInfo[0].text = tile.TileName;
+            GeneralInfo[1].text = tile.RessourceGroupId.ToString();
+            GeneralInfo[2].text = tile.Cost + " $";
+            GeneralInfo[3].text = tile.MaximalProductionCount.ToString();
+            GeneralInfo[4].text = (int)(tile.TileEfficiency * 100) + " %";
 
             for (int i = 0; i < tile.LocalRessources.Length; i++)
             {
@@ -238,9 +240,20 @@ public class CanvasController : MonoBehaviour
     public void UpdateCityPropertiesUI()
     {
         Cash.text = GameProperties.Cash + "$";
-        Population.text = GameProperties.Population.ToString();
-        AmountOfStructures.text = GameProperties.AmountOfTiles + " tiles";
+        //Population.text = countPopulation().ToString();
+        // AmountOfStructures.text = GameProperties.AmountOfTiles + " tiles";
     }
+
+    // private int countPopulation()
+    // {
+    //     int populationTemp = 0;
+
+    //     for (int i = 0; i < RessourceGroups.UnemployedCitizen.Count; i++)
+    //     {
+
+    //     }
+    //     return populationTemp;
+    // }
 
     public void UpdateAsteroidProperties()
     {

@@ -34,8 +34,11 @@ public class Rocket : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        PlayExplosion();
-        StartCoroutine(Destroy());
+        if (other.gameObject.tag.Equals("Asteroid"))
+        {
+            PlayExplosion();
+            StartCoroutine(Destroy());
+        }
     }
 
     IEnumerator Destroy()

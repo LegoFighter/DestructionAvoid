@@ -171,7 +171,7 @@ public class BoardHandler : MonoBehaviour
                     if (GameProperties.Cash >= selectedTile.Cost)
                     {
                         GameProperties.Cash -= selectedTile.Cost;
-                        GameProperties.AmountOfTiles++;
+                        // GameProperties.AmountOfTiles++;
                         board.AddTile(selectedGameObejct, clickedGameObject);
                         selectedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
                         CityPropertiesUpdated.Raise();
@@ -198,7 +198,7 @@ public class BoardHandler : MonoBehaviour
                 else if (action == 1 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
                     GameProperties.Cash += clickedTile.Cost / 2;
-                    GameProperties.AmountOfTiles--;
+                    // GameProperties.AmountOfTiles--;
                     board.RemoveTile(clickedGameObject);
                     HideLaunchUI.Raise();
                     UpdateGroupUI.Raise();

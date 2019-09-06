@@ -40,8 +40,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -79,9 +82,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 74
+      Script: {instanceID: 0}
+    - Class: 75
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -100,9 +109,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9750}
     - Class: 114
+      Script: {instanceID: 9802}
+    - Class: 114
       Script: {instanceID: 10022}
     - Class: 114
       Script: {instanceID: 10066}
+    - Class: 114
+      Script: {instanceID: 10418}
     - Class: 114
       Script: {instanceID: 10530}
     - Class: 114
@@ -627,7 +640,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: b755ef5c174d15a91242ac27de2f3a18
+      Hash: fafdabf193b844e23c14351c9abe80c7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RocketCenter
@@ -1113,7 +1126,7 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 59f040c2d06d8bda389f8d46053c9e95
+      Hash: 057e80b86f7fdfc65e25440ac7793832
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
