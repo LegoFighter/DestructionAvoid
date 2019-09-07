@@ -14,5 +14,4 @@ public class GameProperties : ScriptableObject
     public int CountdownHoursLeft;
     public Tile SelectedTile;
     public List<GameObject> TilesToDelete;
-    
 }

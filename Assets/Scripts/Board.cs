@@ -33,32 +33,43 @@ public class Board : MonoBehaviour
 
     public void AddTile(GameObject tileToAdd, GameObject tileToReplace)
     {
-        int indexToReplace = 0;
-
-        for (int i = 0; i < Tiles.Length; i++)
+        if (tileToReplace != null)
         {
-            if (Tiles[i] == tileToReplace)
+            int indexToReplace = 0;
+
+            for (int i = 0; i < Tiles.Length; i++)
             {
-                indexToReplace = i;
-                break;
+                if (Tiles[i] == tileToReplace)
+                {
+                    indexToReplace = i;
+                    break;
+                }
             }
+            GameObject tileInstance = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
+            Tiles[indexToReplace] = tileInstance;
+            Tile tileRef = tileInstance.GetComponent<Tile>();
+
+            if (tileRef.Type == 0)
+            {
+                tileRef.RessourceGroupId = 0;
+            }
+            else
+            {
+                tileRef.RessourceGroupId = GameProperties.ActiveRessourceGroup;
+            }
+
+            if (!isBuildMode && tileRef.Type == 0)
+            {
+                tileInstance.SetActive(false);
+            }
+
+            if (GameProperties.TilesToDelete.Contains(tileToReplace))
+            {
+                GameProperties.TilesToDelete.Remove(tileToReplace);
+            }
+
+            Destroy(tileToReplace);
         }
-
-        GameObject tileInstance = Instantiate(tileToAdd, tileToReplace.transform.position, Quaternion.identity, gameObject.transform);
-        Tiles[indexToReplace] = tileInstance;
-        Tile tileRef = tileInstance.GetComponent<Tile>();
-
-        if (!isBuildMode && tileRef.Type == 0)
-        {
-            tileInstance.SetActive(false);
-        }
-
-        if (GameProperties.TilesToDelete.Contains(tileToReplace))
-        {
-            GameProperties.TilesToDelete.Remove(tileToReplace);
-        }
-
-        Destroy(tileToReplace);
     }
 
     public void RemoveTile(GameObject tileAtPosition)
@@ -75,7 +86,10 @@ public class Board : MonoBehaviour
     {
         for (int i = GameProperties.TilesToDelete.Count - 1; i >= 0; i--)
         {
-            RemoveTile(GameProperties.TilesToDelete[i]);
+            GameObject go = GameProperties.TilesToDelete[i];
+            if (go != null)
+                RemoveTile(go);
+
         }
     }
 

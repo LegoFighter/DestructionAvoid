@@ -55,8 +55,23 @@ public class NuclearTestArea : MonoBehaviour
     IEnumerator DeleteSelf()
     {
         yield return new WaitForSecondsRealtime(2);
-        GameProperties.TilesToDelete.Add(gameObject);
-        GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
+
+        // GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
+        foreach (var item in GameObjectsInRange)
+        {
+            if (!GameProperties.TilesToDelete.Contains(item))
+            {
+                GameProperties.TilesToDelete.Add(item);
+            }
+        }
+
+        if (!GameProperties.TilesToDelete.Contains(gameObject))
+        {
+            GameProperties.TilesToDelete.Add(gameObject);
+        }
+
+        yield return new WaitForSecondsRealtime(0.25f);
+
         BombTestFailed.Raise();
         HideTileInfo.Raise();
     }
@@ -67,7 +82,7 @@ public class NuclearTestArea : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Tile tile = other.gameObject.GetComponent<Tile>();
-        if (tile != null && !tile.InDangerZone && tile.Type != 0)
+        if (tile != null && !tile.InDangerZone && tile.Type != 0) //&& tile.Type != 9)
         {
             GameObjectsInRange.Add(other.gameObject);
             tile.InDangerZone = true;
@@ -77,7 +92,7 @@ public class NuclearTestArea : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Tile tile = other.gameObject.GetComponent<Tile>();
-        if (tile != null && tile.InDangerZone && tile.Type != 0)
+        if (tile != null && tile.InDangerZone && tile.Type != 0) //&& tile.Type != 9)
         {
             GameObjectsInRange.Remove(other.gameObject);
             tile.InDangerZone = false;

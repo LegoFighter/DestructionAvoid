@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         GameProperties.ActiveRessourceGroup = 0;
         GameProperties.TilesToDelete = new List<GameObject>();
 
-        GameProperties.TilesToDelete.Clear();
+        // GameProperties.TilesToDelete.Clear();
 
         AsteroidData.Asteroid = Asteroid;
         AsteroidData.AsteroidSpeed = 50000;
@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
 
         CountdownUpdateUI.Raise();
         CityPropertiesUpdated.Raise();
+
+        // Screen.SetResolution(1600, 900, true);
     }
 
     void Update()

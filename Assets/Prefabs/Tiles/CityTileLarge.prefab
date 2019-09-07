@@ -1105,6 +1105,7 @@ MonoBehaviour:
   Type: 3
   Cost: 17000
   TileName: Large City
+  InDangerZone: 0
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,

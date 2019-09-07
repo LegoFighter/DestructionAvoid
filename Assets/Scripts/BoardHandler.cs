@@ -26,7 +26,7 @@ public class BoardHandler : MonoBehaviour
     public GameEvent TileBuild;
     public GameEvent TileSold;
     public GameEvent TileDetailsShow;
-        public GameEvent TileDetailsHide;
+    public GameEvent TileDetailsHide;
     public GameEvent TileDetailsUpdate;
     public GameEvent NotEnoughMoney;
 
@@ -172,20 +172,25 @@ public class BoardHandler : MonoBehaviour
                     {
                         GameProperties.Cash -= selectedTile.Cost;
                         // GameProperties.AmountOfTiles++;
-                        board.AddTile(selectedGameObejct, clickedGameObject);
-                        selectedTile.RessourceGroupId = GameProperties.ActiveRessourceGroup;
+                        board.AddTile(selectedGameObejct, clickedGameObject);                     
                         CityPropertiesUpdated.Raise();
                         UpdateGroupUI.Raise();
                         TileBuild.Raise();
                         SwitchLaunchUI(selectedTile);
-                    } else {
+                    }
+                    else
+                    {
                         NotEnoughMoney.Raise();
                     }
                 }
                 else if (action == 0 && !board.CheckIfTileEmpty(clickedGameObject))
                 {
+                    if (clickedTile.Type != 0)
+                    {
+                        GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    }
+
                     SwitchLaunchUI(clickedTile);
-                    GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
                     CityPropertiesUpdated.Raise();
@@ -235,7 +240,10 @@ public class BoardHandler : MonoBehaviour
                 {
                     SwitchLaunchUI(clickedTile);
 
-                    GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    if (clickedTile.Type != 0)
+                    {
+                        GameProperties.ActiveRessourceGroup = clickedTile.RessourceGroupId;
+                    }
                     UpdateGroupUI.Raise();
                     ShowGroupUI.Raise();
                 }

@@ -5319,7 +5319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  RessourceGroupId: 2
+  RessourceGroupId: 0
   Type: 7
   Cost: 70000
   TileName: Rocket Center

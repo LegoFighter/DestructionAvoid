@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  RessourceGroupId: 2
+  RessourceGroupId: 0
   Type: 8
   Cost: 25000
   TileName: Science Campus
