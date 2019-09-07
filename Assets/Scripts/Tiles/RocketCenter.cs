@@ -27,6 +27,8 @@ public class RocketCenter : MonoBehaviour
 
     private bool bonusApplied;
 
+    public GameEvent SuccessRate;
+
     void Start()
     {
         baseTile = GetComponent<Tile>();
@@ -64,7 +66,16 @@ public class RocketCenter : MonoBehaviour
 
     private void CalculateSuccessPropability()
     {
-        SuccessPropabiltiy = (baseTile.LocalRessources[4] / baseTile.AmountRessourcesMax[4]) - ((baseTile.LocalRessources[4] / baseTile.AmountRessourcesMax[4]) / 5);
+        float prob_0 = (float)baseTile.LocalRessources[0] / (float)baseTile.AmountRessourcesMax[0];
+        float prob_1 = (float)baseTile.LocalRessources[1] / (float)baseTile.AmountRessourcesMax[1];
+        float prob_2 = (float)baseTile.LocalRessources[3] / (float)baseTile.AmountRessourcesMax[3];
+        float prob_3 = (float)baseTile.LocalRessources[4] / (float)baseTile.AmountRessourcesMax[4];
+        float prob_4 = (float)baseTile.LocalRessources[5] / (float)baseTile.AmountRessourcesMax[5];
+
+        float all_prob = prob_0 + prob_1 + prob_2 + prob_3 + prob_4;
+        SuccessPropabiltiy = all_prob / 5;
+        GameProperties.RocketSuccessRate = (int)(SuccessPropabiltiy*100);
+        SuccessRate.Raise();
     }
     private void OnTriggerEnter(Collider other)
     {

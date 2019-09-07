@@ -42,10 +42,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -382,7 +380,7 @@ ScriptsOnlyBuild:
     className: GameEvent
   - hash:
       serializedVersion: 2
-      Hash: 7987c611531f17b913f157dd6f8d250f
+      Hash: 3c1726b9927968eb001662f70428bcca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameProperties
@@ -670,7 +668,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: fafdabf193b844e23c14351c9abe80c7
+      Hash: f274f43ebf43e9e764369855c93012ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RocketCenter
@@ -1176,4 +1174,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Map.unity
-  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v6.x86_64
+  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v7.x86_64

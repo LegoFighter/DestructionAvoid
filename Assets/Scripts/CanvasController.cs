@@ -59,6 +59,10 @@ public class CanvasController : MonoBehaviour
     [Header("Help")]
     public GameObject HelpUI;
 
+    public void ShowSuccessRate() {
+        ShowNewInfoMessage("Rocket Success Propability is " + GameProperties.RocketSuccessRate + " %");
+    }
+
     public void HideHelpUI()
     {
         HelpUI.SetActive(false);
@@ -239,7 +243,9 @@ public class CanvasController : MonoBehaviour
 
     public void UpdateCityPropertiesUI()
     {
-        Cash.text = GameProperties.Cash + "$";
+        // Cash.text = GameProperties.Cash + "$";
+
+        Cash.text = string.Format("{0:n0}",  GameProperties.Cash) + "$" ;
         //Population.text = countPopulation().ToString();
         // AmountOfStructures.text = GameProperties.AmountOfTiles + " tiles";
     }

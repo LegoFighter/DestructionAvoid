@@ -90,7 +90,7 @@ public class Tile : MonoBehaviour
             RessourceGroups.Workers[RessourceGroupId] += ProductionOutput[5];
             productionCycleCounter++;
         }
-        TileEfficiency = productionCycleCounter / MaximalProductionCount;
+        TileEfficiency = (float)productionCycleCounter /(float) MaximalProductionCount;
     }
 
     private bool CanProduce()

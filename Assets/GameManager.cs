@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         GameProperties.CountdownMinutesLeft = CountdownStartMinute;
         GameProperties.ActiveRessourceGroup = 0;
         GameProperties.TilesToDelete = new List<GameObject>();
+        GameProperties.RocketSuccessRate = 0;
 
         // GameProperties.TilesToDelete.Clear();
 

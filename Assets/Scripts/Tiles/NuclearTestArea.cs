@@ -30,7 +30,7 @@ public class NuclearTestArea : MonoBehaviour
     public void TestBomb()
     {
 
-        SuccessPropabiltiy = (baseTile.LocalRessources[4] / baseTile.AmountRessourcesMax[4]);
+        SuccessPropabiltiy = ((float)baseTile.LocalRessources[4] / (float)baseTile.AmountRessourcesMax[4]);
 
         float testResult = UnityEngine.Random.Range(SuccessPropabiltiy, 1f);
 
