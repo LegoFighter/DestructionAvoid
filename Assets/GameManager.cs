@@ -21,16 +21,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool runningState;
 
+
+    [Header("Game")]
+    public int StartMoney;
+    public int CountdownStartHour;
+    public int CountdownStartMinute;
+
+
     public void Start()
     {
         runningState = true;
 
-        GameProperties.Cash = 1000000;
-        GameProperties.AverageEducationLevel = 0;
-        GameProperties.Population = 0;
+        GameProperties.Cash = StartMoney;
+        // GameProperties.AverageEducationLevel = 0;
+        // GameProperties.Population = 0;
         // GameProperties.AmountOfTiles = 0;
-        GameProperties.CountdownHoursLeft = 24;
-        GameProperties.CountdownMinutesLeft = 0;
+        GameProperties.CountdownHoursLeft = CountdownStartHour;
+        GameProperties.CountdownMinutesLeft = CountdownStartMinute;
         GameProperties.ActiveRessourceGroup = 0;
         GameProperties.TilesToDelete = new List<GameObject>();
 

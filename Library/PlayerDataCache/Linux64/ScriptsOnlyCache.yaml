@@ -29,6 +29,9 @@ ScriptsOnlyBuild:
     - ScienceCenter
     - Tile
     - Timer
+    Unity.ProBuilder.Editor.dll:
+    - UnityEditor.ProBuilder.PolyShapeEditor
+    - UnityEditor.ProBuilder.ProBuilderMeshEditor
     Unity.ProBuilder.dll:
     - UnityEngine.ProBuilder.PolyShape
     - UnityEngine.ProBuilder.ProBuilderMesh
@@ -42,11 +45,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -1177,4 +1177,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Map.unity
-  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v3.x86_64
+  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v4.x86_64

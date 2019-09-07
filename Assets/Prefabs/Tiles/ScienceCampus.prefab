@@ -1919,7 +1919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d5dba398bdbc989b5ec62a7be0736e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BonusApplied: {fileID: 0}
 --- !u!114 &-435155066074315689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,10 +1932,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  RessourceGroupId: 0
+  RessourceGroupId: 2
   Type: 8
   Cost: 25000
   TileName: Science Campus
+  InDangerZone: 0
   GameProperties: {fileID: 11400000, guid: cc5237691f2cd46eea8794150a4d7f9f, type: 2}
   RessourceGroups: {fileID: 11400000, guid: 98c73e70a93a16d3bb3693902ab7c18c, type: 2}
   CityPropertiesUpdated: {fileID: 11400000, guid: e2bc1afa3d784820da43d2294e1e158e,
@@ -1952,12 +1952,12 @@ MonoBehaviour:
   - Professors
   - Workers
   LocalRessources: 000000000000000000000000000000000500000000000000
-  AmountRessourcesMax: 000000000000000032000000c80000001400000005000000
-  RunningCosts: 000000000000000000000000140000002c01000064000000
+  AmountRessourcesMax: 000000000000000032000000e20400007800000005000000
+  RunningCosts: 0000000000000000000000007d0000002c01000064000000
   WearPerHour: 000000000000000000000000020000000000000001000000
   MaximalHarvestRates: 000000000000000032000000320000000300000002000000
   MaterialCost: 000000000000000032000000000000000000000000000000
-  ProductionOutput: 000000000000000000000000320000001900000000000000
+  ProductionOutput: 000000000000000000000000640000000300000000000000
   MaximalProductionCount: 1
   TileEfficiency: 0
 --- !u!114 &4157731694014777680

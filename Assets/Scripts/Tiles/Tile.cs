@@ -120,11 +120,11 @@ public class Tile : MonoBehaviour
     {
         for (int i = 0; i < LocalRessources.Length; i++)
         {
-            if (LocalRessources[i] <= 0)
+            if (LocalRessources[i] > 0)
             {
                 LocalRessources[i] -= WearPerHour[i];
 
-                if (LocalRessources[i] <= 0)
+                if (LocalRessources[i] < 0)
                     LocalRessources[i] = 0;
 
             }
@@ -145,9 +145,16 @@ public class Tile : MonoBehaviour
 
     private void HarvestRessource(Dictionary<int, int> ressourceDictionary, int ressourceIndex)
     {
-        if (ressourceDictionary[RessourceGroupId] > 0)
+        int cappedMaximum = AmountRessourcesMax[ressourceIndex] - LocalRessources[ressourceIndex];
+        int regularMaximum = MaximalHarvestRates[ressourceIndex];
+
+        if(cappedMaximum < regularMaximum) {
+            regularMaximum = cappedMaximum;
+        }
+
+        if (ressourceDictionary[RessourceGroupId] > 0 && regularMaximum > 0 && cappedMaximum > 0)
         {
-            int ressourceCheck = ressourceDictionary[RessourceGroupId] - MaximalHarvestRates[ressourceIndex];
+            int ressourceCheck = ressourceDictionary[RessourceGroupId] - regularMaximum;
 
             if (ressourceCheck <= 0)
             {
@@ -157,12 +164,15 @@ public class Tile : MonoBehaviour
             }
             else
             {
-                ressourceDictionary[RessourceGroupId] -= MaximalHarvestRates[ressourceIndex];
-                LocalRessources[ressourceIndex] += MaximalHarvestRates[ressourceIndex];
+                ressourceDictionary[RessourceGroupId] -= regularMaximum;
+                LocalRessources[ressourceIndex] += regularMaximum;
             }
 
             if (ressourceDictionary[RessourceGroupId] < 0)
                 ressourceDictionary[RessourceGroupId] = 0;
         }
+
+
+
     }
 }

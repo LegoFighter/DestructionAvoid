@@ -55,8 +55,8 @@ public class NuclearTestArea : MonoBehaviour
     IEnumerator DeleteSelf()
     {
         yield return new WaitForSecondsRealtime(2);
-        GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
         GameProperties.TilesToDelete.Add(gameObject);
+        GameProperties.TilesToDelete.AddRange(GameObjectsInRange);
         BombTestFailed.Raise();
         HideTileInfo.Raise();
     }
