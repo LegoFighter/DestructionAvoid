@@ -1174,4 +1174,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Map.unity
-  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v7.x86_64
+  playerPath: /home/michalbilinski/Unity/Compiled/Destruction Avoid alpha v9.x86_64

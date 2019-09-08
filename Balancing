@@ -1,21 +1,19 @@
-RocketCenter
+Caution! A giant asteroid is on a direct course to Earth!
 
 
+As the mayor of your city, it is your task to research a rocket that is powerful enough to destroy the asteroid.
+Nuclear bomb test areas can encourage the generation of students and professors, but could pose a risk.
 
-Factory
-
-
-
-Smal City
+Humanity puts all their hope in you. You must not disappoint them.
 
 
-Mid City
+Me
+Ich bin 27 Jahre alt und studiere Informatik in Hamburg. Dies ist mein erster Computer Spiel und Resultat der OLC CODEJAM 2019.
+Idee
+Ich wollte umbedingt etwas mit Tiles machen. Der Rest hat sich während der Nachdenkphase so ergeben.
 
-
-Big City
-
-
-Mineshaft
-
-
-Unityversity
+Wichtig
+Ich brauche eure Unterstützung! Die Balancierung des Spiel ist provisorisch.
+Da dies ein sehr Ressourcenlastiges Strategie Spiel ist, und ich für die Balancierung nicht so viel Zeit hatte, müssen wir mit schlechter Balancierung beginnen.
+Object-Oriented im Moment, aber...
+Wenn die Resonanz zum Spiel gut ist, werde ich Teile des Spiels mit dem Unity 3D DOTS umwandeln. Dies wir helfen, um wahnsinnige Performance zu erlangen und die graphische Leistung erhöhen zu können. Ruckeln wird es dann nicht mehr geben, wenn man 200 Raketen gleichzeitig losschießt.

@@ -73,14 +73,14 @@ public class GameManager : MonoBehaviour
         // Screen.SetResolution(1600, 900, true);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            CountdownOver.Raise();
-            StartCoroutine(GameOverTimer());
-        }
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.R))
+    //     {
+    //         CountdownOver.Raise();
+    //         StartCoroutine(GameOverTimer());
+    //     }
+    // }
 
     public void CountdownMinute()
     {

@@ -21,18 +21,19 @@ public class Timer : MonoBehaviour
         StartCoroutine(MinuteTick());
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            OnHour.Raise();
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            OnQuarter.Raise();
-        }
-    }
-    IEnumerator MinuteTick()
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.X))
+    //     {
+    //         OnHour.Raise();
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.Y))
+    //     {
+    //         OnQuarter.Raise();
+    //     }
+    // }
+    
+        IEnumerator MinuteTick()
     {
         while (clockActive)
         {
