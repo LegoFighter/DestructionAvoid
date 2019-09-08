@@ -65,7 +65,7 @@ boni:
 Rocket Center
 -----------------------------------------------------
 
-A rocket costs 25000 $.
+A rocket costs 12500 $.
 
 intput:
 * Students and Professor. Raw Material and Proccessed. Maybe some workers.
